@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.brainrun">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/br"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/br"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.BrainRun">
+        <activity android:name=".cscore4"
+            android:parentActivityName=".Evaluation"></activity>
+        <activity android:name=".cscore3"
+            android:parentActivityName=".Evaluation"/>
+        <activity android:name=".cscore2"
+            android:parentActivityName=".Evaluation"/>
+        <activity android:name=".cscore1"
+            android:parentActivityName=".Evaluation"/>
+        <activity android:name=".sports" />
+        <activity android:name=".trip" />
+        <activity android:name=".car" />
+        <activity android:name=".school" />
+        <activity android:name=".Evaluation"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".bscore4"
+            android:parentActivityName=".Inference" />
+        <activity
+            android:name=".bscore3"
+            android:parentActivityName=".Inference" />
+        <activity
+            android:name=".bscore2"
+            android:parentActivityName=".Inference" />
+        <activity
+            android:name=".bscore1"
+            android:parentActivityName=".Inference" />
+        <activity android:name=".john" />
+        <activity android:name=".cia" />
+        <activity android:name=".ben" />
+        <activity android:name=".adam" />
+        <activity android:name=".Inference"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".sunday1" />
+        <activity android:name=".detective" />
+        <activity android:name=".gifts" />
+        <activity
+            android:name=".ascore4"
+            android:parentActivityName=".analysis" />
+        <activity
+            android:name=".ascore3"
+            android:parentActivityName=".analysis" />
+        <activity
+            android:name=".ascore2"
+            android:parentActivityName=".analysis" />
+        <activity
+            android:name=".ascore1"
+            android:parentActivityName=".analysis" />
+        <activity android:name=".graphical" />
+        <activity
+            android:name=".analysis"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Register"
+            android:parentActivityName=".Login" />
+        <activity android:name=".Login" />
+        <activity
+            android:name=".score4"
+            android:parentActivityName=".interpretation" />
+        <activity
+            android:name=".score3"
+            android:parentActivityName=".interpretation" />
+        <activity
+            android:name=".score2"
+            android:parentActivityName=".interpretation" />
+        <activity
+            android:name=".score"
+            android:parentActivityName=".interpretation" />
+        <activity android:name=".riddle" />
+        <activity android:name=".graph" />
+        <activity android:name=".oddOne" />
+        <activity android:name=".analogy" />
+        <activity
+            android:name=".interpretation"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>
