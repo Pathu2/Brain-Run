@@ -67,6 +67,7 @@ public class Evaluation extends AppCompatActivity {
         c4= findViewById(R.id.cardView4);
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF5A5A")));
+        bar.setTitle("Perfect Estimation");
     }
 
     public void show1(View view) {

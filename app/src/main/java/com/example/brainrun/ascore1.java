@@ -34,6 +34,7 @@ public class ascore1 extends AppCompatActivity {
         //getSupportActionBar().hide();
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF5A5A")));
+        bar.setTitle("Blake's Boxes");
 
         TextView textview0 = findViewById(R.id.textView19);
         int sec = Integer.parseInt(data1);

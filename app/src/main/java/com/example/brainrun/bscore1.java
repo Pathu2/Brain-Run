@@ -30,6 +30,7 @@ public class bscore1 extends AppCompatActivity {
 
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF5A5A")));
+        bar.setTitle("Adam's Day");
 
         TextView textview0 = findViewById(R.id.textView19);
         int sec = Integer.parseInt(data1);

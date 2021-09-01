@@ -36,6 +36,7 @@ public class bscore2 extends AppCompatActivity {
 
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF5A5A")));
+        bar.setTitle("Cia's Surprise");
         TextView textview0 = findViewById(R.id.textView19);
         int sec = Integer.parseInt(data1);
         int min = 0;

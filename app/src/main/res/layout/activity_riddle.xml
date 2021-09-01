@@ -275,7 +275,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:textColor="@color/black"
-                    android:text="Jonas is planning a route for a race. He uses negative number to represent points before finishing line while positive represents after finishing line."
+                    android:text="Jonas is planning a route for a race. He uses negative number to represent position before finishing line while positive represents after finishing line."
                     android:textSize="16sp" />
 
                 <ImageView
@@ -500,7 +500,7 @@
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
                     android:textColor="@color/black"
-                    android:text="A Dolphin was swimming at -7 units, negative sign donates below sea level depth. Now he moves up 3m from the starting position."
+                    android:text="A Dolphin was swimming at -7 units, negative sign denotes below sea level depth. Now he moves up 3m from the starting position."
                     android:textSize="16sp" />
 
                 <ImageView

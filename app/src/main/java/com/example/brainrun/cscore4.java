@@ -34,6 +34,7 @@ public class cscore4 extends AppCompatActivity {
 
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF5A5A")));
+        bar.setTitle("Football Match");
 
         TextView textview0 = findViewById(R.id.textView19);
         int sec = Integer.parseInt(data1);

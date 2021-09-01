@@ -162,7 +162,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="top"
                     android:textColor="@color/black"
-                    android:text="Tyre 1: Last 7-8 years and has decent grip."
+                    android:text="Tyre 1: Lasts 7-8 years and has decent grip."
                     android:textSize="16sp" />
 
                 <RadioButton
@@ -171,7 +171,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="top"
                     android:textColor="@color/black"
-                    android:text="Tyre 2: Last 2 to 3 years and has really good grip."
+                    android:text="Tyre 2: Lasts 2 to 3 years and has really good grip."
                     android:textSize="16sp" />
 
                 <RadioButton
@@ -180,7 +180,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="top"
                     android:textColor="@color/black"
-                    android:text="Tyre 3: Last 4 to 5 years and has the best grip."
+                    android:text="Tyre 3: Lasts 4 to 5 years and has the best grip."
                     android:textSize="16sp" />
             </RadioGroup>
         </LinearLayout>

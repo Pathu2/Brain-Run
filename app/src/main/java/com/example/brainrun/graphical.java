@@ -93,7 +93,7 @@ public class graphical extends AppCompatActivity {
         cardView3= findViewById(R.id.cardView2);
         b01 = findViewById(R.id.button01);
         b02 = findViewById(R.id.button);
-        sub = findViewById(R.id.button2);
+        sub = findViewById(R.id.subButton);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -755,10 +755,10 @@ public class graphical extends AppCompatActivity {
         inf = (int)((a1*m1 + a2*m2 + a3*m3)*(t/r));
 
         userID = fAuth.getCurrentUser().getUid();
-        DocumentReference documentReference1 = fstore.collection("users").document(userID).collection("Analysis").document(userID);
+        DocumentReference documentReference1 = fstore.collection("users").document(userID).collection("Blake's Adventure").document(userID);
 
         Map<String,Object> user1 = new HashMap<>();
-        user1.put("Ana4",inf);
+        user1.put("Graphical Night",inf);
 
         documentReference1.set(user1, SetOptions.merge());
 

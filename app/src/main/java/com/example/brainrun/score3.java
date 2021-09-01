@@ -35,6 +35,7 @@ public class score3 extends AppCompatActivity {
 
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF5A5A")));
+        bar.setTitle("Riddles");
 
 
         TextView textview0 = findViewById(R.id.textView19);

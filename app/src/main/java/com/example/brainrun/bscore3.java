@@ -37,6 +37,7 @@ public class bscore3 extends AppCompatActivity {
 
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF5A5A")));
+        bar.setTitle("Dane's Drawing");
 
         TextView textview0 = findViewById(R.id.textView19);
         Log.d("testing","scorepage1"+ data1);

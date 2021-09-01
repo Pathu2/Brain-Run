@@ -34,7 +34,7 @@ public class cscore2 extends AppCompatActivity {
 
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF5A5A")));
-
+        bar.setTitle("Peter's Dilemma");
         TextView textview0 = findViewById(R.id.textView19);
         int sec = Integer.parseInt(data1);
         int min = 0;

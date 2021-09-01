@@ -71,6 +71,7 @@ public class Inference extends AppCompatActivity {
 
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF5A5A")));
+        bar.setTitle("What's Next");
     }
 
     public void show(View view) {

@@ -9,20 +9,26 @@
         android:roundIcon="@drawable/br"
         android:supportsRtl="true"
         android:theme="@style/Theme.BrainRun">
-        <activity android:name=".cscore4"
-            android:parentActivityName=".Evaluation"></activity>
-        <activity android:name=".cscore3"
-            android:parentActivityName=".Evaluation"/>
-        <activity android:name=".cscore2"
-            android:parentActivityName=".Evaluation"/>
-        <activity android:name=".cscore1"
-            android:parentActivityName=".Evaluation"/>
+        <activity android:name=".Dashboard"></activity>
+        <activity
+            android:name=".cscore4"
+            android:parentActivityName=".Evaluation" />
+        <activity
+            android:name=".cscore3"
+            android:parentActivityName=".Evaluation" />
+        <activity
+            android:name=".cscore2"
+            android:parentActivityName=".Evaluation" />
+        <activity
+            android:name=".cscore1"
+            android:parentActivityName=".Evaluation" />
         <activity android:name=".sports" />
         <activity android:name=".trip" />
         <activity android:name=".car" />
         <activity android:name=".school" />
-        <activity android:name=".Evaluation"
-            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".Evaluation"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".bscore4"
             android:parentActivityName=".Inference" />
@@ -39,8 +45,9 @@
         <activity android:name=".cia" />
         <activity android:name=".ben" />
         <activity android:name=".adam" />
-        <activity android:name=".Inference"
-            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".Inference"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".sunday1" />
         <activity android:name=".detective" />
         <activity android:name=".gifts" />

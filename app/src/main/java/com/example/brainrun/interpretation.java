@@ -67,6 +67,7 @@ public class interpretation extends AppCompatActivity {
 
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF5A5A")));
+        bar.setTitle("Curious Sam");
 
     }
 

@@ -270,10 +270,10 @@ public class car extends AppCompatActivity {
         inf = (int)((a1*m1 + a2*m2 + a3*m3)*(t/r));
 
         userID = fAuth.getCurrentUser().getUid();
-        DocumentReference documentReference1 = fstore.collection("users").document(userID).collection("Evaluation").document(userID);
+        DocumentReference documentReference1 = fstore.collection("users").document(userID).collection("Perfect Estimation").document(userID);
 
         Map<String,Object> user1 = new HashMap<>();
-        user1.put("Eva2",inf);
+        user1.put("Peter's Dilemma",inf);
 
         documentReference1.set(user1, SetOptions.merge());
 

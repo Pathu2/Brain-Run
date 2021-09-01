@@ -274,10 +274,10 @@ public class cia extends AppCompatActivity {
         inf = (int)((a1*m1 + a2*m2 + a3*m3)*(t/r));
 
         userID = fAuth.getCurrentUser().getUid();
-        DocumentReference documentReference1 = fstore.collection("users").document(userID).collection("Inference").document(userID);
+        DocumentReference documentReference1 = fstore.collection("users").document(userID).collection("What's Next").document(userID);
 
         Map<String,Object> user1 = new HashMap<>();
-        user1.put("Inf2",inf);
+        user1.put("Cia's Surprise",inf);
 
         documentReference1.set(user1, SetOptions.merge());
 

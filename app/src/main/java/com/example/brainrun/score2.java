@@ -36,6 +36,7 @@ public class score2 extends AppCompatActivity {
 
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF5A5A")));
+        bar.setTitle("Playing with Graphs");
 
         TextView textview0 = findViewById(R.id.textView19);
 

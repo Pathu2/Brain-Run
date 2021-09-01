@@ -236,7 +236,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="What is the approximate growth of Plant from Day 8 to Day 12?"
+                android:text="What is the approximate growth of Plant between Day 8 to Day 12?"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 

@@ -89,10 +89,10 @@ public class Register extends AppCompatActivity {
 
                             userID = fAuth.getCurrentUser().getUid();
                             DocumentReference documentReference = fstore.collection("users").document(userID);
-                            DocumentReference documentReference1 = fstore.collection("users").document(userID).collection("Inference").document(userID);
-                            DocumentReference documentReference2 = fstore.collection("users").document(userID).collection("Interpretation").document(userID);
-                            DocumentReference documentReference3 = fstore.collection("users").document(userID).collection("Analysis").document(userID);
-                            DocumentReference documentReference4 = fstore.collection("users").document(userID).collection("Evaluation").document(userID);
+                            DocumentReference documentReference1 = fstore.collection("users").document(userID).collection("What's Next").document(userID);
+                            DocumentReference documentReference2 = fstore.collection("users").document(userID).collection("Curious Sam").document(userID);
+                            DocumentReference documentReference3 = fstore.collection("users").document(userID).collection("Blake's Adventure").document(userID);
+                            DocumentReference documentReference4 = fstore.collection("users").document(userID).collection("Perfect Estimation").document(userID);
 
                             Map<String,Object> user = new HashMap<>();
                             user.put("fname",fullName);
@@ -130,7 +130,7 @@ public class Register extends AppCompatActivity {
                             Map<String,Object> user4 = new HashMap<>();
                             documentReference4.set(user4);
 
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(),Login.class));
 
 
                         }else {

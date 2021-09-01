@@ -67,6 +67,7 @@ public class analysis extends AppCompatActivity {
 
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF5A5A")));
+        bar.setTitle("Blake's Adventure");
 
     }
     public void show1(View view) {
