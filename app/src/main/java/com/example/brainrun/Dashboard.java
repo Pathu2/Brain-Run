@@ -27,6 +27,7 @@ public class Dashboard extends AppCompatActivity {
     private TextView CiaSurprise;
     private TextView DaneDrawing;
     private TextView JohnNorman;
+    private TextView TotalCuriousSam,TotalBlake,TotalNext,TotalPerfect;
 
 
 
@@ -34,6 +35,10 @@ public class Dashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+        TotalCuriousSam=findViewById(R.id.total_score_curioussam);
+        TotalBlake=findViewById(R.id.total_score_blake);
+        TotalNext=findViewById(R.id.total_score_next);
+        TotalPerfect=findViewById(R.id.total_score_estimation);
 
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF5A5A")));
@@ -58,6 +63,9 @@ public class Dashboard extends AppCompatActivity {
         String Inter3 = getShared3.getString("riddle","0");
         Riddles.setText(Inter3);
 
+        int i_one=Integer.parseInt(Inter1)+Integer.parseInt(Inter2)+Integer.parseInt(Inter3)+Integer.parseInt(Inter4);
+        TotalCuriousSam.setText(String.valueOf(i_one));
+
         BlakeBox = findViewById(R.id.BoxScore);
         SharedPreferences getShared5 = getSharedPreferences("analysis",MODE_PRIVATE);
         String analysis1 = getShared5.getString("gifts","0");
@@ -77,6 +85,9 @@ public class Dashboard extends AppCompatActivity {
         SharedPreferences getShared8 = getSharedPreferences("analysis",MODE_PRIVATE);
         String analysis4 = getShared8.getString("sunday1","0");
         SundayGame.setText(analysis4);
+
+        int i_two=Integer.parseInt(analysis1)+Integer.parseInt(analysis2)+Integer.parseInt(analysis3)+Integer.parseInt(analysis4);
+        TotalBlake.setText(String.valueOf(i_two));
 
         AdamDay= findViewById(R.id.AdamScore);
         SharedPreferences getShared9 = getSharedPreferences("Inference",MODE_PRIVATE);
@@ -98,6 +109,9 @@ public class Dashboard extends AppCompatActivity {
         String Infer4 = getShared12.getString("john","0");
         JohnNorman.setText(Infer4);
 
+        int i_three=Integer.parseInt(Infer1)+Integer.parseInt(Infer2)+Integer.parseInt(Infer3)+Integer.parseInt(Infer4);
+        TotalNext.setText(String.valueOf(i_three));
+
         SchoolChaos = findViewById(R.id.ChaosScore);
         SharedPreferences getShared13 = getSharedPreferences("Evaluation",MODE_PRIVATE);
         String Eval1 = getShared13.getString("school","0");
@@ -117,5 +131,8 @@ public class Dashboard extends AppCompatActivity {
         SharedPreferences getShared16 = getSharedPreferences("Evaluation",MODE_PRIVATE);
         String Eval4 = getShared16.getString("sport","0");
         Football.setText(Eval4);
+
+        int i_four=Integer.parseInt(Eval1)+Integer.parseInt(Eval2)+Integer.parseInt(Eval3)+Integer.parseInt(Eval4);
+        TotalPerfect.setText(String.valueOf(i_four));
     }
 }

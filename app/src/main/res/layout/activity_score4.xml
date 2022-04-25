@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -16,7 +17,9 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
-        app:layout_constraintVertical_bias="0.20">
+        app:layout_constraintVertical_bias="0.20"
+        android:layout_below="@id/textView14"
+        android:layout_centerHorizontal="true">
 
         <TableRow
             android:layout_width="match_parent"
@@ -29,8 +32,8 @@
                 android:layout_margin="5dp"
                 android:padding="5dp"
                 android:text="Question 1"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:textColor="#3B2383"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textView18"
@@ -40,7 +43,7 @@
                 android:padding="5dp"
                 android:text="TextView"
                 android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
         </TableRow>
 
         <TableRow
@@ -55,8 +58,8 @@
                 android:layout_weight="1"
                 android:padding="5dp"
                 android:text="Question 2"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:textColor="#3B2383"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textView9"
@@ -67,7 +70,7 @@
                 android:padding="5dp"
                 android:text="Question 1"
                 android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
         </TableRow>
 
         <TableRow
@@ -82,8 +85,8 @@
                 android:layout_weight="1"
                 android:padding="5dp"
                 android:text="Question 3"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:textColor="#3B2383"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textView12"
@@ -94,7 +97,7 @@
                 android:padding="5dp"
                 android:text="Question 1"
                 android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
         </TableRow>
 
     </TableLayout>
@@ -104,56 +107,53 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="ScoreCard"
-        android:textColor="@color/black"
+        android:text="Score Card"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#dd0a0a"
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         android:id="@+id/textView14"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Curious Sam: Odd One Out"
-        android:textColor="@color/black"
-        android:textSize="24sp"
+        android:text="What's Next!!!: Dane's Drawing"
+        android:textColor="#1C0D3F"
+        android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
-        app:layout_constraintVertical_bias="0.10" />
-
+        app:layout_constraintVertical_bias="0.10"
+        android:layout_below="@id/textView7"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/time"
+        android:layout_below="@id/tableLayout"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/timer"/>
     <TextView
         android:id="@+id/textView19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:text="TextView"
-        android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textColor="#382B57"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Score Bar"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout"
+        android:layout_below="@id/timer"
+        android:layout_centerHorizontal="true"/>
 
     <ProgressBar
-        android:id="@+id/progressBar6"
+        android:id="@+id/progressBar13"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="220dp"
         android:layout_height="47dp"
@@ -165,8 +165,13 @@
         android:background="@color/cardview_dark_background"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        app:layout_constraintStart_toStartOf="parent"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/score"
+        tools:layout_editor_absoluteX="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_below="@id/textView19"/>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -53,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().setTitle(Html.fromHtml("<font color=\"red\">"+"BRAIN RUN"+"</font>"));
+
 
         //fAuth = FirebaseAuth.getInstance();
         fAuth = FirebaseAuth.getInstance();
@@ -65,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
         //getSupportActionBar().hide()
         ActionBar bar = getSupportActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF5A5A")));
+        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFffff")));
 
         SharedPreferences getShared1 = getSharedPreferences("Interpretation",MODE_PRIVATE);
         String Inter1 = getShared1.getString("analogy","0");

@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -34,7 +35,7 @@ public class riddle extends AppCompatActivity {
     FirebaseFirestore fstore;
     String userID;
 
-    private CardView cardView1,cardView2,cardView3,cardView4,cardView5;
+    private LinearLayout cardView1,cardView2,cardView3,cardView4,cardView5;
     int count1=0 ; String num1 = "0";
     boolean continueThread=true;
     Thread t;int ans =0;private Button b1,b2,sub;

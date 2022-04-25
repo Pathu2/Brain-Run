@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,7 +37,7 @@ public class graph extends AppCompatActivity {
     FirebaseFirestore fstore;
     String userID;
 
-    private CardView cardView1,cardView2,cardView3,cardView4,cardView5;
+    private LinearLayout cardView1,cardView2,cardView3,cardView4,cardView5;
     int count1=0 ; String num1 = "0";
     boolean continueThread=true;
     Thread t;int ans =0; private  Button b11,b22,sub;
@@ -253,6 +254,7 @@ public class graph extends AppCompatActivity {
             b22.setVisibility(View.VISIBLE);
             cardView4.setVisibility(View.GONE);
             cardView3.setVisibility(View.VISIBLE);
+            sub.setVisibility(View.INVISIBLE);
         }
 //        else if(cardView4.getVisibility() == View.VISIBLE){
 //            cardView4.setVisibility(View.GONE);

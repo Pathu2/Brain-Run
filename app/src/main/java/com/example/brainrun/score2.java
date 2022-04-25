@@ -26,7 +26,10 @@ public class score2 extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        //super.onBackPressed();
+        super.onBackPressed();
+        Intent i=new Intent(score2.this,interpretation.class);
+        finish();
+        startActivity(i);
     }
 
     @Override
@@ -45,23 +48,41 @@ public class score2 extends AppCompatActivity {
         if(sec > 59) {
             min = sec / 60;
             sec = sec % 60;
-            textview0.setText( "Time taken "+min +" min "+sec+ " sec");
+            textview0.setText( min +" min "+sec+ " sec");
         }
         else{
-            textview0.setText( "Time taken " + data1 + " sec");
+            textview0.setText( data1 + " sec");
         }
 
 
 
         TextView textview1 = findViewById(R.id.textView18);
-        if (Integer.parseInt(data11) == 0) textview1.setText("Wrong");
-        else textview1.setText("Right");
+        if (Integer.parseInt(data11) == 0) {
+            textview1.setText("Wrong");
+            textview1.setTextColor(getResources().getColor(R.color.red));
+        }
+        else {
+            textview1.setText("Right");
+            textview1.setTextColor(getResources().getColor(R.color.green));
+        }
         TextView textview2 = findViewById(R.id.textView9);
-        if (Integer.parseInt(data22) == 0) textview2.setText("Wrong");
-        else textview2.setText("Right");
+        if (Integer.parseInt(data22) == 0) {
+            textview2.setText("Wrong");
+            textview2.setTextColor(getResources().getColor(R.color.red));
+        }
+        else {
+            textview2.setText("Right");
+            textview2.setTextColor(getResources().getColor(R.color.green));
+        }
         TextView textview3 = findViewById(R.id.textView12);
-        if (Integer.parseInt(data33) == 0) textview3.setText("Wrong");
-        else textview3.setText("Right");
+        if (Integer.parseInt(data33) == 0) {
+            textview3.setText("Wrong");
+            textview3.setTextColor(getResources().getColor(R.color.red));
+        }
+        else {
+            textview3.setText("Right");
+            textview3.setTextColor(getResources().getColor(R.color.green));
+        }
 //        TextView textview4 = findViewById(R.id.textView14);
 //        if (Integer.parseInt(data44) == 0) textview4.setText("Wrong");
 //        else textview4.setText("Right");
@@ -99,8 +120,8 @@ public class score2 extends AppCompatActivity {
 //        progressBar = (ProgressBar)findViewById(R.id.progressBar4);
 //        progressBar.setProgress(inf);
 
-        TextView textviews = findViewById(R.id.textView15);
-        textviews.setText("Points Scored "+inf+"/100");
+        //TextView textviews = findViewById(R.id.textView15);
+        //textviews.setText(inf+"/100");
     }
 
     public void move3 (View view){

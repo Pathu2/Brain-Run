@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -38,7 +39,7 @@ public class graphical extends AppCompatActivity {
     boolean continueThread=true;
     Thread t;int ans =0; private Button b01,b02,sub;
     public RadioButton m1,m2,m3,m4,m5;
-    private CardView cardView1,cardView2,cardView3;
+    private LinearLayout cardView1,cardView2,cardView3;
 
     private Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23,b24;
     int d1=0,d2=0,d3=0,d4=0,d5=0,d6=0,d7=0,d8=0,d9=0,d10=0,d11=0,d12=0,d13=0,d14=0,d15=0,d16=0,d17=0,d18=0,d19=0,d20=0,d21=0,d22=0,d23=0,d24=0;
@@ -839,6 +840,7 @@ public class graphical extends AppCompatActivity {
             b02.setVisibility(View.VISIBLE);
             cardView3.setVisibility(View.GONE);
             cardView2.setVisibility(View.VISIBLE);
+            sub.setVisibility(View.INVISIBLE);
         }
 //        else if(cardView4.getVisibility() == View.VISIBLE){
 //            cardView4.setVisibility(View.GONE);

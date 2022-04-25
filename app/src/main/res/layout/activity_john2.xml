@@ -1,24 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".john">
+    android:background="#feeeee"
+    tools:context=".john"
+    android:padding="30dp">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/relative_layout"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cardView"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="10dp"
-        android:visibility="visible"
-        app:cardBackgroundColor="#FDEDED"
+        app:cardBackgroundColor="#fff"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
         app:layout_constraintBottom_toTopOf="@+id/button5"
@@ -37,11 +48,6 @@
             android:layout_marginRight="5dp"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1"
-                android:textColor="#000000" />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -49,7 +55,8 @@
                 <VideoView
                     android:id="@+id/videoView"
                     android:layout_width="320dp"
-                    android:layout_height="200dp" />
+                    android:layout_height="200dp"
+                    android:padding="10dp"/>
             </LinearLayout>
 
 
@@ -57,10 +64,14 @@
                 android:id="@+id/textView13"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="#dd0a0a"
                 android:text="What do you infer about Norman from the above instance?"
-                android:textSize="22sp" />
+                android:textSize="20sp"
+                android:padding="10dp"/>
 
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -71,44 +82,59 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Norman likes the food"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:textColor="#dd0a0a"
+                    android:textSize="16sp"
+                    android:background="@drawable/play_button"
+                    android:layout_marginBottom="10dp"
+                    android:elevation="5dp"
+                    android:buttonTint="#dd0a0a"/>
 
                 <RadioButton
                     android:id="@+id/radioButton1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
+                    android:textColor="#dd0a0a"
                     android:text="Norman does not like the food."
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:background="@drawable/play_button"
+                    android:layout_marginBottom="10dp"
+                    android:elevation="5dp"
+                    android:buttonTint="#dd0a0a" />
 
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
+                    android:textColor="#dd0a0a"
                     android:text="Norman is eating his food"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:background="@drawable/play_button"
+                    android:layout_marginBottom="10dp"
+                    android:elevation="5dp"
+                    android:buttonTint="#dd0a0a" />
 
 
             </RadioGroup>
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cardView1"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:layout_centerHorizontal="true">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="10dp"
-        android:visibility="gone"
-        app:cardBackgroundColor="#FDEDED"
+        app:cardBackgroundColor="#fff"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -124,11 +150,6 @@
             android:layout_marginRight="5dp"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2"
-                android:textColor="#000000" />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -136,65 +157,85 @@
                 <VideoView
                     android:id="@+id/videoView1"
                     android:layout_width="320dp"
-                    android:layout_height="200dp" />
+                    android:layout_height="200dp"
+                    android:padding="10dp"/>
             </LinearLayout>
 
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="#dd0a0a"
                 android:text="Which of the following are correct?"
-                android:textSize="22sp" />
-
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fadingEdgeLength="5dp"
-                android:padding="5dp">
-
-                <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:text="John and Norman both ate the cookies"
-                    android:textSize="16sp" />
-
-                <RadioButton
-                    android:id="@+id/radioButton2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:text="Norman ate all the cookies"
-                    android:textSize="16sp" />
-
-                <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:text="John could not figure out who ate the cookies."
-                    android:textSize="16sp" />
+                android:textSize="20sp"
+                android:padding="10dp"/>
 
 
-            </RadioGroup>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadingEdgeLength="5dp"
+            android:padding="5dp">
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#dd0a0a"
+                android:text="John and Norman both ate the cookies"
+                android:textSize="16sp"
+                android:background="@drawable/play_button"
+                android:layout_marginBottom="10dp"
+                android:elevation="5dp"
+                android:buttonTint="#dd0a0a" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#dd0a0a"
+                android:text="Norman ate all the cookies"
+                android:textSize="16sp"
+                android:background="@drawable/play_button"
+                android:layout_marginBottom="10dp"
+                android:elevation="5dp"
+                android:buttonTint="#dd0a0a" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#dd0a0a"
+                android:text="John could not figure out who ate the cookies."
+                android:textSize="16sp"
+                android:background="@drawable/play_button"
+                android:layout_marginBottom="10dp"
+                android:elevation="5dp"
+                android:buttonTint="#dd0a0a" />
+
+
+        </RadioGroup>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cardView2"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:layout_centerHorizontal="true">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="10dp"
-        android:visibility="gone"
-        app:cardBackgroundColor="#FDEDED"
+        app:cardBackgroundColor="#fff"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -210,11 +251,6 @@
             android:layout_marginRight="5dp"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="3"
-                android:textColor="#000000" />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -222,118 +258,118 @@
                 <VideoView
                     android:id="@+id/videoView2"
                     android:layout_width="320dp"
-                    android:layout_height="200dp" />
+                    android:layout_height="200dp"
+                    android:padding="10dp"/>
             </LinearLayout>
 
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="#dd0a0a"
                 android:text="Where does John and his family were going ?"
-                android:textSize="22sp" />
-
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fadingEdgeLength="5dp"
-                android:padding="5dp">
-
-                <RadioButton
-                    android:id="@+id/radioButton3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Movie Theater"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-                <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Restaurant"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-                <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="To watch a soccer game"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                android:textSize="20sp"
+                android:padding="10dp"/>
 
 
-            </RadioGroup>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadingEdgeLength="5dp"
+            android:padding="5dp">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintGuide_percent="0.93" />
+            <RadioButton
+                android:id="@+id/radioButton3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Movie Theater"
+                android:textColor="#dd0a0a"
+                android:textSize="16sp"
+                android:background="@drawable/play_button"
+                android:layout_marginBottom="10dp"
+                android:elevation="5dp"
+                android:buttonTint="#dd0a0a" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintGuide_percent="0.90" />
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Restaurant"
+                android:textColor="#dd0a0a"
+                android:textSize="16sp"
+                android:background="@drawable/play_button"
+                android:layout_marginBottom="10dp"
+                android:elevation="5dp"
+                android:buttonTint="#dd0a0a" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintGuide_percent="0.10" />
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="To watch a soccer game"
+                android:textColor="#dd0a0a"
+                android:textSize="16sp"
+                android:background="@drawable/play_button"
+                android:layout_marginBottom="10dp"
+                android:elevation="5dp"
+                android:buttonTint="#dd0a0a" />
+
+
+        </RadioGroup>
+        </LinearLayout>
+    </RelativeLayout>
+
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="sub"
-        android:padding="3dp"
+        android:padding="2dp"
         android:text="Submit"
-        android:textSize="16sp"
+        android:textSize="12sp"
         android:visibility="invisible"
-        app:backgroundTint="#FF5A5A"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+        android:background="@drawable/gradient_button"
+        android:layout_marginBottom="10dp"
+        android:textColor="#fff"
+        android:layout_toRightOf="@id/timer"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/relative_layout"/>
 
     <Button
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="move1"
-        android:padding="3dp"
+        android:padding="2dp"
         android:text="next"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:backgroundTint="#FDEDED"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3" />
+        android:textColor="#fff"
+        android:textSize="12sp"
+        android:background="@drawable/gradient_button"
+        android:layout_toRightOf="@id/timer"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/relative_layout"/>
 
     <Button
         android:id="@+id/button6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="move"
-        android:padding="3dp"
+        android:padding="2dp"
         android:text="Back"
-        android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textColor="#fff"
+        android:textSize="12sp"
         android:visibility="visible"
-        app:backgroundTint="#FDEDED"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="@+id/guideline4" />
+        android:background="@drawable/gradient_button"
+        android:layout_toLeftOf="@id/timer"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/relative_layout"/>
 
     <TextView
         android:id="@+id/timer"
@@ -342,11 +378,14 @@
         android:layout_marginBottom="10dp"
         android:padding="4dp"
         android:text="00"
-        android:textColor="#090909"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        android:textColor="#dd0a0a"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/play_button"
+        android:layout_below="@id/relative_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

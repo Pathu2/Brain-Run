@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -38,7 +39,7 @@ public class oddOne extends AppCompatActivity {
     int count1=0 ; String num1 = "0";
     boolean continueThread=true;
     Thread t;int ans =0;private Button b1,b2;
-    private CardView cardView1,cardView2,cardView3,cardView4,cardView5;
+    private LinearLayout cardView1,cardView2,cardView3,cardView4,cardView5;
 
     private RadioButton rb1,rb2,rb3,rb4,rb21,rb22,rb23,rb24,rb31,rb32,rb33,rb34,rb41,rb42,rb43,rb44,rb51,rb52,rb53,rb54;
 
@@ -539,6 +540,7 @@ public class oddOne extends AppCompatActivity {
             b2.setVisibility(View.VISIBLE);
             cardView4.setVisibility(View.GONE);
             cardView2.setVisibility(View.VISIBLE);
+            m2.setVisibility(View.INVISIBLE);
         }
 //        else if(cardView4.getVisibility() == View.VISIBLE){
 //            cardView4.setVisibility(View.GONE);

@@ -1,30 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".interpretation">
+    tools:context=".interpretation"
+    android:padding="20dp">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginBottom="10dp">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
@@ -32,20 +27,21 @@
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="5dp"
                 android:background="#FFFFFF"
-                android:onClick="show1"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
+                app:cardElevation="10dp"
+                android:layout_weight="1">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
+                    android:layout_height="match_parent"
+                    android:background="#fef5f5"
                     android:orientation="vertical">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fadingEdgeLength="5sp">
+                        android:layout_height="wrap_content"
+                        android:fadingEdgeLength="5sp"
+                        android:id="@+id/card_view1">
 
                         <ImageView
                             android:id="@+id/imageView1"
@@ -56,7 +52,8 @@
                             app:layout_constraintBottom_toBottomOf="@+id/textView11"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="@+id/textView11"
-                            app:srcCompat="@drawable/product" />
+                            app:srcCompat="@drawable/product"
+                            android:paddingTop="15dp"/>
 
                         <TextView
                             android:id="@+id/textView11"
@@ -64,21 +61,44 @@
                             android:layout_height="wrap_content"
                             android:padding="10dp"
                             android:text="Odd One Out"
-                            android:textColor="#000000"
+                            android:textColor="#dd0a0a"
                             android:textSize="24sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins_bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/imageView1"
+                            app:layout_constraintHorizontal_bias="0.229"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.155" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/card_view_one"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/start_game_button"
+                        android:onClick="show1"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="10dp"
+                        android:text="Start Game"
+                        android:textColor="#fff"
+                        android:textSize="10dp"
+                        android:textStyle="bold"/>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/expand_view1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:background="#FFFFFF"
-                        android:visibility="gone">
+                        android:background="#fef5f5"
+                        android:visibility="gone"
+                        android:layout_below="@id/card_view1">
 
                         <TextView
                             android:id="@+id/textView3"
@@ -88,6 +108,7 @@
                             android:text="Sam had a busy day yesterday, but at some locations he visited, he found things that were out of place. Let's see if you can figure the ODD ONE OUT."
                             android:textColor="@color/black"
                             android:textSize="20sp"
+                            android:background="#fef5f5"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -117,7 +138,7 @@
                             app:layout_constraintStart_toStartOf="parent" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                </LinearLayout>
+                </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
 
@@ -125,7 +146,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView4"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
@@ -135,18 +156,20 @@
                 android:background="#FFFFFF"
                 android:onClick="show3"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
+                app:cardElevation="10dp"
+                android:layout_weight="1">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
+                    android:layout_height="match_parent"
+                    android:background="#fef5f5"
                     android:orientation="vertical">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fadingEdgeLength="5sp">
+                        android:layout_height="wrap_content"
+                        android:fadingEdgeLength="5sp"
+                        android:id="@+id/card_view2">
 
                         <ImageView
                             android:id="@+id/imageView4"
@@ -157,7 +180,8 @@
                             app:layout_constraintBottom_toBottomOf="@+id/textView44"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="@+id/textView44"
-                            app:srcCompat="@drawable/puzzle" />
+                            app:srcCompat="@drawable/puzzle"
+                            android:paddingTop="15dp"/>
 
                         <TextView
                             android:id="@+id/textView44"
@@ -165,21 +189,44 @@
                             android:layout_height="wrap_content"
                             android:padding="10dp"
                             android:text="Riddles"
-                            android:textColor="#000000"
+                            android:textColor="#dd0a0a"
                             android:textSize="24sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins_bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/imageView4"
+                            app:layout_constraintHorizontal_bias="0.15"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.155" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/card_view_two"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/start_game_button"
+                        android:onClick="show3"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="10dp"
+                        android:text="Start Game"
+                        android:textColor="#fff"
+                        android:textSize="10dp"
+                        android:textStyle="bold"/>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/expand_view4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:background="#FFFFFF"
-                        android:visibility="gone">
+                        android:background="#fef5f5"
+                        android:visibility="gone"
+                        android:layout_below="@id/card_view2">
 
                         <TextView
                             android:id="@+id/textView34"
@@ -190,7 +237,8 @@
                             android:textColor="@color/black"
                             android:textSize="20sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:background="#fef5f5"/>
 
                         <ImageView
                             android:id="@+id/imageView6"
@@ -218,14 +266,14 @@
                             app:layout_constraintStart_toStartOf="parent" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                </LinearLayout>
+                </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
@@ -233,20 +281,21 @@
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="5dp"
                 android:background="#FFFFFF"
-                android:onClick="show2"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
+                app:cardElevation="10dp"
+                android:layout_weight="1">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
+                    android:layout_height="match_parent"
+                    android:background="#fef5f5"
                     android:orientation="vertical">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fadingEdgeLength="5sp">
+                        android:layout_height="wrap_content"
+                        android:fadingEdgeLength="5sp"
+                        android:id="@+id/card_view3">
 
                         <ImageView
                             android:id="@+id/imageView33"
@@ -257,7 +306,8 @@
                             app:layout_constraintBottom_toBottomOf="@+id/textView5"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="@+id/textView5"
-                            app:srcCompat="@drawable/confused" />
+                            app:srcCompat="@drawable/confused"
+                            android:paddingTop="15dp"/>
 
                         <TextView
                             android:id="@+id/textView5"
@@ -265,21 +315,45 @@
                             android:layout_height="wrap_content"
                             android:padding="10dp"
                             android:text="Playing with Graphs"
-                            android:textColor="#000000"
-                            android:textSize="24sp"
+                            android:textColor="#dd0a0a"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/imageView33"
+                            app:layout_constraintHorizontal_bias="0.47"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.155"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="@font/poppins_bold"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/card_view_three"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/start_game_button"
+                        android:onClick="show2"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="10dp"
+                        android:text="Start Game"
+                        android:textColor="#fff"
+                        android:textSize="10dp"
+                        android:textStyle="bold"/>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/expand_view3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:background="#FFFFFF"
-                        android:visibility="gone">
+                        android:background="#fef5f5"
+                        android:visibility="gone"
+                        android:layout_below="@id/card_view3">
 
                         <TextView
                             android:id="@+id/textView33"
@@ -290,7 +364,8 @@
                             android:textColor="@color/black"
                             android:textSize="20sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:background="#fef5f5"/>
 
                         <ImageView
                             android:id="@+id/imageView32"
@@ -318,35 +393,36 @@
                             app:layout_constraintStart_toStartOf="parent" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                </LinearLayout>
+                </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="10dp"
                 android:background="#FFFFFF"
-                android:onClick="show"
                 app:cardCornerRadius="20dp"
-                app:cardElevation="10dp">
+                app:cardElevation="10dp"
+                android:layout_weight="1">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
+                    android:layout_height="match_parent"
+                    android:background="#fef5f5"
                     android:orientation="vertical">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fadingEdgeLength="5sp">
+                        android:layout_height="wrap_content"
+                        android:fadingEdgeLength="5sp"
+                        android:id="@+id/card_view4">
 
                         <ImageView
                             android:id="@+id/imageView11"
@@ -357,7 +433,8 @@
                             app:layout_constraintBottom_toBottomOf="@+id/textView"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="@+id/textView"
-                            app:srcCompat="@drawable/robber" />
+                            app:srcCompat="@drawable/robber"
+                            android:paddingTop="15dp"/>
 
                         <TextView
                             android:id="@+id/textView"
@@ -365,21 +442,44 @@
                             android:layout_height="wrap_content"
                             android:padding="10dp"
                             android:text="Bank Thief"
-                            android:textColor="#000000"
+                            android:textColor="#dd0a0a"
                             android:textSize="24sp"
+                            android:fontFamily="@font/poppins_bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/imageView11"
+                            app:layout_constraintHorizontal_bias="0.206"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.155"
+                            android:textStyle="bold"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/card_view_four"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/start_game_button"
+                        android:onClick="show"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="10dp"
+                        android:text="Start Game"
+                        android:textColor="#fff"
+                        android:textSize="10dp"
+                        android:textStyle="bold"/>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/expand_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:background="#FFFFFF"
-                        android:visibility="gone">
+                        android:background="#fef5f5"
+                        android:visibility="gone"
+                        android:layout_below="@id/card_view4">
 
                         <TextView
                             android:id="@+id/textView2"
@@ -390,7 +490,8 @@
                             android:textColor="@color/black"
                             android:textSize="20sp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:background="#fef5f5"/>
 
                         <ImageView
                             android:id="@+id/imageView22"
@@ -418,12 +519,10 @@
                             app:layout_constraintStart_toStartOf="parent" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                </LinearLayout>
+                </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
 
 
         </LinearLayout>
-
-    </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

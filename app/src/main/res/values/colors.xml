@@ -5,10 +5,13 @@
 <!--    <color name="purple_700">#FF3700B3</color>-->
     <color name="purple_500">#FF5A5A</color>
     <color name="purple_700">#FF5A5A</color>
-    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_200">#067503</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="color1">#33DAFF</color>
     <color name="color2">#3393FF</color>
+    <color name="red">#ff0000</color>
+    <color name="green">#01831E</color>
+    <color name="score">#382B57</color>
 </resources>

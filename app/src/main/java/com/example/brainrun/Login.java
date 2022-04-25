@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,20 +26,23 @@ public class Login extends AppCompatActivity {
 
     EditText mEmail,mPassword;
     Button mLoginBtn,createNew,createBtn2;
-    TextView mCreateBtn,forgotTextLink,forgot,tex;
+    TextView mCreateBtn,forgotTextLink,forgot,tex,forgot_pass,signin_txt;
     ProgressBar progressBar;
     FirebaseAuth fAuth;
-
+    ImageView forgotimg;
 
     @Override
     public void onBackPressed() {
         if(forgot.getVisibility() == View.INVISIBLE){
             mPassword.setVisibility(View.VISIBLE);
             mLoginBtn.setVisibility(View.VISIBLE);
+            signin_txt.setVisibility(View.VISIBLE);
             createNew.setVisibility(View.VISIBLE);
             forgot.setVisibility(View.VISIBLE);
             createBtn2.setVisibility(View.INVISIBLE);
+            forgot_pass.setVisibility(View.INVISIBLE);
             tex.setVisibility(View.INVISIBLE);
+            forgotimg.setVisibility(View.INVISIBLE);
             mEmail.setText("");
         }else{
             super.onBackPressed();
@@ -63,6 +67,9 @@ public class Login extends AppCompatActivity {
         createNew = findViewById(R.id.createBtn);
         forgot = findViewById(R.id.textView16);
         createBtn2 = findViewById(R.id.createBtn2);
+        forgot_pass=findViewById(R.id.forgot_password);
+        signin_txt=findViewById(R.id.sign_in_text);
+        forgotimg=findViewById(R.id.forgot);
         //mCreateBtn = findViewById(R.id.createText);
 
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
@@ -107,10 +114,13 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mPassword.setVisibility(View.INVISIBLE);
+                signin_txt.setVisibility(View.INVISIBLE);
                 mLoginBtn.setVisibility(View.INVISIBLE);
                 createNew.setVisibility(View.INVISIBLE);
                 forgot.setVisibility(View.INVISIBLE);
+                forgotimg.setVisibility(View.VISIBLE);
                 createBtn2.setVisibility(View.VISIBLE);
+                forgot_pass.setVisibility(View.VISIBLE);
                 tex.setVisibility(View.VISIBLE);
             }
         });

@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".Dashboard">
+    tools:context=".Dashboard"
+    android:padding="5dp">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:layout_marginBottom="5dp">
 
             <TextView
                 android:id="@+id/scoreHeader"
@@ -22,26 +26,57 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Your Score"
-                android:textSize="22sp"
+                android:textSize="40sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
+                app:layout_constraintTop_toTopOf="parent"
+                android:textColor="#dd0a0a"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cardView1"
+                android:background="@drawable/ligh_red_shadow"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="15dp"
+                android:backgroundTint="#fef5f5"
+                android:elevation="10dp"
+                android:padding="15dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/curiousSam2"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="20dp"
-                android:text="Curious Sam"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.20"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/scoreHeader" />
+                android:text="Curious Sam  :"
+                android:textColor="#dd0a0a"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="15dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/curiousSam2"
+                            android:text="00"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="20dp"
+                            android:textSize="25sp"
+                            android:textColor="#dd0a0a"
+                            android:layout_marginRight="200dp"
+                            android:textStyle="bold"
+                            android:id="@+id/total_score_curioussam"/>
+                    </RelativeLayout>
 
             <TableLayout
                 android:id="@+id/Table1"
@@ -151,21 +186,56 @@
                         android:textSize="16sp" />
                 </TableRow>
             </TableLayout>
-
+                </LinearLayout>
+</androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cardView2"
+            android:background="@drawable/ligh_red_shadow"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="15dp"
+            android:backgroundTint="#fef5f5"
+            android:elevation="10dp"
+            android:padding="15dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/blake"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="20dp"
-                android:text="Blake"
-                android:textColor="@color/black"
-                android:textSize="20sp"
+                android:text="Blake's Adventure  :"
+                android:textColor="#dd0a0a"
+                android:textSize="25sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.20"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/Table1" />
+                android:layout_marginBottom="15dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/blake"
+                android:text="00"
+                android:textSize="25sp"
+                android:textColor="#dd0a0a"
+                android:layout_marginRight="200dp"
+                android:textStyle="bold"
+                android:id="@+id/total_score_blake"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"/>
+            </RelativeLayout>
 
             <TableLayout
                 android:id="@+id/Table2"
@@ -275,21 +345,56 @@
                         android:textSize="16sp" />
                 </TableRow>
             </TableLayout>
-
+        </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cardView3"
+            android:background="@drawable/ligh_red_shadow"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="15dp"
+            android:backgroundTint="#fef5f5"
+            android:elevation="10dp"
+            android:padding="15dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/perfectEstimation"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="20dp"
-                android:text="PerfectEstimation"
-                android:textColor="@color/black"
-                android:textSize="20sp"
+                android:text="Perfect Estimation  :"
+                android:textColor="#dd0a0a"
+                android:textSize="25sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.20"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/Table2" />
+                android:layout_marginBottom="15dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/perfectEstimation"
+                    android:text="00"
+                    android:textSize="25sp"
+                    android:textColor="#dd0a0a"
+                    android:layout_marginRight="20dp"
+                    android:textStyle="bold"
+                    android:id="@+id/total_score_estimation"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"/>
+            </RelativeLayout>
 
             <TableLayout
                 android:id="@+id/Table3"
@@ -399,21 +504,56 @@
                         android:textSize="16sp" />
                 </TableRow>
             </TableLayout>
-
+        </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cardView4"
+            android:background="@drawable/ligh_red_shadow"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="15dp"
+            android:backgroundTint="#fef5f5"
+            android:elevation="10dp"
+            android:padding="15dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/whatsNext"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="20dp"
-                android:text="What's Next"
-                android:textColor="@color/black"
-                android:textSize="20sp"
+                android:text="What's Next!!!  :"
+                android:textColor="#dd0a0a"
+                android:textSize="25sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.20"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/Table3" />
+                android:layout_marginBottom="15dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/whatsNext"
+                android:text="00"
+                android:textSize="25sp"
+                android:textColor="#dd0a0a"
+                android:layout_marginRight="20dp"
+                android:textStyle="bold"
+                android:id="@+id/total_score_next"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"/>
+            </RelativeLayout>
 
             <TableLayout
                 android:id="@+id/Table4"
@@ -524,6 +664,8 @@
                 </TableRow>
             </TableLayout>
         </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        </LinearLayout>
     </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".riddle">
-
-    <androidx.cardview.widget.CardView
+    android:background="#feeeee"
+    tools:context=".riddle"
+    android:padding="30dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relative_layout"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/cardView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="5dp"
@@ -18,14 +30,15 @@
         android:layout_marginRight="4dp"
         android:layout_marginBottom="10dp"
         android:visibility="visible"
-        app:cardBackgroundColor="#FDEDED"
+        app:cardBackgroundColor="#fff"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,17 +51,11 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:text="1"
-                android:textColor="#000000" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
 
                 <TextView
                     android:id="@+id/textView4"
@@ -57,13 +64,13 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="In a game of 9 cards, numbered from -4 to +4, positive represents moving forward while negative moving backward."
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:textColor="#dd0a0a"
+                    android:textSize="20sp" />
 
                 <ImageView
                     android:id="@+id/imageView5"
                     android:layout_width="200dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="120dp"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/cards" />
             </LinearLayout>
@@ -75,58 +82,82 @@
                 android:layout_marginTop="4dp"
                 android:gravity="center"
                 android:text="After picking 4 cards, you are at same position. What is the correct group of cards? "
-                android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textColor="#dd0a0a"
+                android:textSize="17sp"
+                android:paddingBottom="10dp"/>
 
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fadingEdgeLength="5dp"
-                android:padding="5dp">
 
-                <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="+4,+3,+2,-2"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-
-                <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="+4,+3,+2,0"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-
-                <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="+4,+3,0,-1"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-
-                <RadioButton
-                    android:id="@+id/radioButton1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="+4,0,-1,-3"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-
-            </RadioGroup>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadingEdgeLength="5dp"
+            android:padding="5dp"
+            android:layout_marginTop="20dp">
 
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="+4,+3,+2,-2"
+                android:textColor="#dd0a0a"
+                android:textSize="16sp"
+                android:background="@drawable/play_button"
+                android:layout_marginBottom="10dp"
+                android:elevation="5dp"
+                android:buttonTint="#dd0a0a"/>
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="+4,+3,+2,0"
+                android:textColor="#dd0a0a"
+                android:textSize="16sp"
+                android:background="@drawable/play_button"
+                android:layout_marginBottom="10dp"
+                android:elevation="5dp"
+                android:buttonTint="#dd0a0a"/>
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="+4,+3,0,-1"
+                android:textColor="#dd0a0a"
+                android:textSize="16sp"
+                android:background="@drawable/play_button"
+                android:layout_marginBottom="10dp"
+                android:elevation="5dp"
+                android:buttonTint="#dd0a0a"/>
+
+            <RadioButton
+                android:id="@+id/radioButton1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="+4,0,-1,-3"
+                android:textColor="#dd0a0a"
+                android:textSize="16sp"
+                android:background="@drawable/play_button"
+                android:layout_marginBottom="10dp"
+                android:elevation="5dp"
+                android:buttonTint="#dd0a0a"/>
+
+        </RadioGroup>
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cardView1"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:layout_centerHorizontal="true">
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView1"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
-        android:visibility="gone"
-        app:cardBackgroundColor="#FDEDED"
+        app:cardBackgroundColor="#fff"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -134,7 +165,9 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25">
+        app:layout_constraintVertical_bias="0.25"
+        android:layout_marginBottom="20dp"
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -147,31 +180,25 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:text="2"
-                android:textColor="#000000" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:textColor="@color/black"
+                    android:textColor="#dd0a0a"
                     android:text="In a game of 9 cards. Numbered from -4 to +4. Positive represents moving forward while negative moving backward."
-                    android:textSize="16sp" />
+                    android:textSize="20sp" />
 
                 <ImageView
 
                     android:layout_width="200dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="120dp"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/cards" />
             </LinearLayout>
@@ -183,68 +210,92 @@
                 android:layout_marginTop="4dp"
                 android:gravity="center"
                 android:text="After picking 4 cards, you are 9 steps ahead from your starting point. Then correct group of cards? "
-                android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textColor="#dd0a0a"
+                android:textSize="17sp"
+                android:paddingBottom="10dp"/>
 
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fadingEdgeLength="5dp"
-                android:padding="5dp">
+                android:padding="5dp"
+                android:layout_marginTop="20dp">
 
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="+4,+3,+2,-2"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textColor="#dd0a0a"
+                    android:textSize="16sp"
+                    android:background="@drawable/play_button"
+                    android:layout_marginBottom="10dp"
+                    android:elevation="5dp"
+                    android:buttonTint="#dd0a0a"/>
 
                 <RadioButton
                     android:id="@+id/radioButton2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="+4,+3,+2,0"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textColor="#dd0a0a"
+                    android:textSize="16sp"
+                    android:background="@drawable/play_button"
+                    android:layout_marginBottom="10dp"
+                    android:elevation="5dp"
+                    android:buttonTint="#dd0a0a"/>
 
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="+4,+3,0,-1"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textColor="#dd0a0a"
+                    android:textSize="16sp"
+                    android:background="@drawable/play_button"
+                    android:layout_marginBottom="10dp"
+                    android:elevation="5dp"
+                    android:buttonTint="#dd0a0a"/>
 
                 <RadioButton
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="+4,0,+1,-3"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textColor="#dd0a0a"
+                    android:textSize="16sp"
+                    android:background="@drawable/play_button"
+                    android:layout_marginBottom="10dp"
+                    android:elevation="5dp"
+                    android:buttonTint="#dd0a0a"/>
 
             </RadioGroup>
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cardView2"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:layout_centerHorizontal="true">
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="10dp"
-        android:visibility="gone"
-        app:cardBackgroundColor="#FDEDED"
+        app:cardBackgroundColor="#fff"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -257,31 +308,25 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:text="2"
-                android:textColor="#000000" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:textColor="@color/black"
+                    android:textColor="#dd0a0a"
                     android:text="Jonas is planning a route for a race. He uses negative number to represent position before finishing line while positive represents after finishing line."
-                    android:textSize="16sp" />
+                    android:textSize="20sp" />
 
                 <ImageView
 
                     android:layout_width="200dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="120dp"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/running" />
             </LinearLayout>
@@ -293,60 +338,83 @@
                 android:layout_marginTop="4dp"
                 android:gravity="center"
                 android:padding="2dp"
-                android:text="What does zero represents?"
-                android:textColor="#000000"
-                android:textSize="18sp" />
+                android:text="What does zero represents ?"
+                android:textColor="#dd0a0a"
+                android:textSize="17sp" />
 
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fadingEdgeLength="5dp"
-                android:padding="5dp">
+                android:padding="5dp"
+                android:layout_marginTop="20dp">
 
                 <RadioButton
                     android:id="@+id/radioButton03"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Finish Line"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textColor="#dd0a0a"
+                    android:textSize="16sp"
+                    android:background="@drawable/play_button"
+                    android:layout_marginBottom="10dp"
+                    android:elevation="5dp"
+                    android:buttonTint="#dd0a0a"/>
 
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Starting Position"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textColor="#dd0a0a"
+                    android:textSize="16sp"
+                    android:background="@drawable/play_button"
+                    android:layout_marginBottom="10dp"
+                    android:elevation="5dp"
+                    android:buttonTint="#dd0a0a"/>
 
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Jonas's positions"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textColor="#dd0a0a"
+                    android:textSize="16sp"
+                    android:background="@drawable/play_button"
+                    android:layout_marginBottom="10dp"
+                    android:elevation="5dp"
+                    android:buttonTint="#dd0a0a"/>
 
                 <RadioButton
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Middle of the race"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textColor="#dd0a0a"
+                    android:textSize="16sp"
+                    android:background="@drawable/play_button"
+                    android:layout_marginBottom="10dp"
+                    android:elevation="5dp"
+                    android:buttonTint="#dd0a0a"/>
 
             </RadioGroup>
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cardView3"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:layout_centerHorizontal="true">
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView3"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
-        android:visibility="gone"
-        app:cardBackgroundColor="#FDEDED"
+        app:cardBackgroundColor="#fff"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -354,7 +422,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25">
+        app:layout_constraintVertical_bias="0.25"
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -367,17 +436,11 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:text="4"
-                android:textColor="#000000" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -386,14 +449,14 @@
                     android:gravity="center"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
-                    android:textColor="@color/black"
+                    android:textColor="#dd0a0a"
                     android:text="He starts the race at -50 units and plans to run till +30 at a speed of 40 units/min."
-                    android:textSize="16sp" />
+                    android:textSize="20sp" />
 
                 <ImageView
 
                     android:layout_width="200dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="120dp"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/running" />
             </LinearLayout>
@@ -406,64 +469,86 @@
                 android:gravity="center"
                 android:padding="2dp"
                 android:text="How long will Jonas keep on running?"
-                android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textColor="#dd0a0a"
+                android:textSize="17sp"/>
 
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fadingEdgeLength="5dp"
-                android:padding="5dp">
+                android:padding="5dp"
+                android:layout_marginTop="20dp">
 
                 <RadioButton
                     android:id="@+id/radioButton4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="2 minutes"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textColor="#dd0a0a"
+                    android:textSize="16sp"
+                    android:background="@drawable/play_button"
+                    android:layout_marginBottom="10dp"
+                    android:elevation="5dp"
+                    android:buttonTint="#dd0a0a"/>
 
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="1 minute"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textColor="#dd0a0a"
+                    android:textSize="16sp"
+                    android:background="@drawable/play_button"
+                    android:layout_marginBottom="10dp"
+                    android:elevation="5dp"
+                    android:buttonTint="#dd0a0a"/>
 
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="30 seconds"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textColor="#dd0a0a"
+                    android:textSize="16sp"
+                    android:background="@drawable/play_button"
+                    android:layout_marginBottom="10dp"
+                    android:elevation="5dp"
+                    android:buttonTint="#dd0a0a"/>
 
                 <RadioButton
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="15 seconds"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textColor="#dd0a0a"
+                    android:textSize="16sp"
+                    android:background="@drawable/play_button"
+                    android:layout_marginBottom="10dp"
+                    android:elevation="5dp"
+                    android:buttonTint="#dd0a0a"/>
 
             </RadioGroup>
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cardView4"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:layout_centerHorizontal="true">
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="10dp"
-        android:visibility="gone"
-        app:cardBackgroundColor="#FDEDED"
+        app:cardBackgroundColor="#fff"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -480,17 +565,11 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:text="3"
-                android:textColor="#000000" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -499,13 +578,13 @@
                     android:gravity="center"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
-                    android:textColor="@color/black"
+                    android:textColor="#dd0a0a"
                     android:text="A Dolphin was swimming at -7 units, negative sign denotes below sea level depth. Now he moves up 3m from the starting position."
-                    android:textSize="16sp" />
+                    android:textSize="20sp" />
 
                 <ImageView
                     android:layout_width="200dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="120dp"
                     android:layout_weight="1"
                     android:padding="2dp"
                     app:srcCompat="@drawable/dolphin" />
@@ -519,119 +598,119 @@
                 android:gravity="center"
                 android:padding="2dp"
                 android:text="Where is the dolphin now?"
-                android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textColor="#dd0a0a"
+                android:textSize="17sp" />
 
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fadingEdgeLength="5dp"
-                android:padding="5dp">
-
-                <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="+3"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-
-                <RadioButton
-                    android:id="@+id/radioButton5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="-4"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-
-                <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="-3"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-
-                <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-
-            </RadioGroup>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdgeLength="5dp"
+        android:padding="5dp"
+        android:layout_marginTop="20dp">
 
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="+3"
+            android:textColor="#dd0a0a"
+            android:textSize="16sp"
+            android:background="@drawable/play_button"
+            android:layout_marginBottom="10dp"
+            android:elevation="5dp"
+            android:buttonTint="#dd0a0a"/>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintGuide_percent="0.88" />
+        <RadioButton
+            android:id="@+id/radioButton5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="-4"
+            android:textColor="#dd0a0a"
+            android:textSize="16sp"
+            android:background="@drawable/play_button"
+            android:layout_marginBottom="10dp"
+            android:elevation="5dp"
+            android:buttonTint="#dd0a0a"/>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintGuide_percent="0.90" />
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="-3"
+            android:textColor="#dd0a0a"
+            android:textSize="16sp"
+            android:background="@drawable/play_button"
+            android:layout_marginBottom="10dp"
+            android:elevation="5dp"
+            android:buttonTint="#dd0a0a"/>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintGuide_percent="0.10" />
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#dd0a0a"
+            android:textSize="16sp"
+            android:background="@drawable/play_button"
+            android:layout_marginBottom="10dp"
+            android:elevation="5dp"
+            android:buttonTint="#dd0a0a"/>
+    </RadioGroup>
+        </LinearLayout>
+
+    </RelativeLayout>
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="sub"
-        android:padding="1dp"
+        android:padding="2dp"
         android:text="Submit"
-        android:textSize="16sp"
+        android:textSize="12sp"
         android:visibility="invisible"
-        app:backgroundTint="#FF5A5A"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+        android:background="@drawable/gradient_button"
+        android:layout_marginBottom="10dp"
+        android:textColor="#fff"
+        android:layout_toRightOf="@id/timer"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/relative_layout"/>
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="move1"
-        android:padding="1dp"
+        android:padding="2dp"
         android:text="next"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:backgroundTint="#FDEDED"
+        android:textColor="#fff"
+        android:textSize="12sp"
         app:elevation="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3" />
+        android:background="@drawable/gradient_button"
+        android:layout_toRightOf="@id/timer"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/relative_layout"/>
 
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="move"
-        android:padding="1dp"
+        android:padding="2dp"
         android:text="Back"
-        android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textColor="#fff"
+        android:textSize="12sp"
         android:visibility="visible"
-        app:backgroundTint="#FDEDED"
         app:elevation="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="@+id/guideline4" />
+        android:background="@drawable/gradient_button"
+        android:layout_toLeftOf="@id/timer"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/relative_layout"/>
 
     <TextView
         android:id="@+id/timer"
@@ -640,11 +719,14 @@
         android:layout_marginBottom="10dp"
         android:padding="2dp"
         android:text="00"
-        android:textColor="#090909"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        android:textColor="#dd0a0a"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/play_button"
+        android:layout_below="@id/relative_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>

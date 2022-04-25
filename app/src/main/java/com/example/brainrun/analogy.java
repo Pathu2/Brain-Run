@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -38,7 +39,7 @@ public class analogy extends AppCompatActivity {
     boolean continueThread=true;
     Thread t;int ans =0; private Button b1,b2,sub;
     public RadioButton m1,m2,m3,m4,m5;
-    private CardView cardView1,cardView2,cardView3,cardView4,cardView5;
+    private LinearLayout cardView1,cardView2,cardView3;//cardView4,cardView5;
 
     @Override
     public void onBackPressed() {
@@ -86,8 +87,8 @@ public class analogy extends AppCompatActivity {
         cardView1= findViewById(R.id.cardView);
         cardView2= findViewById(R.id.cardView1);
         cardView3= findViewById(R.id.cardView2);
-        cardView4= findViewById(R.id.cardView3);
-        cardView5= findViewById(R.id.cardView4);
+        //cardView4= findViewById(R.id.cardView3);
+        //cardView5= findViewById(R.id.cardView4);
 
         final TextView textView=(TextView)findViewById(R.id.timer);
         t=new Thread(){
@@ -232,6 +233,7 @@ public class analogy extends AppCompatActivity {
             b2.setVisibility(View.VISIBLE);
             cardView3.setVisibility(View.GONE);
             cardView2.setVisibility(View.VISIBLE);
+            sub.setVisibility(View.INVISIBLE);
         }
 //        else if(cardView4.getVisibility() == View.VISIBLE){
 //            cardView4.setVisibility(View.GONE);

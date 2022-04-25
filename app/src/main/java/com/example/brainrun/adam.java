@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -46,7 +47,7 @@ public class adam extends AppCompatActivity {
     boolean continueThread=true;
     Thread t;int ans =0; private Button b1,b2,sub;
     public RadioButton m1,m2,m3;
-    private CardView cardView1,cardView2,cardView3;
+    private LinearLayout cardView1,cardView2,cardView3;
 
     private static final String TAG = "adamactivity";
     private ViewPager mViewPager;
@@ -178,6 +179,7 @@ public class adam extends AppCompatActivity {
                     cardView2.setVisibility(View.VISIBLE);
                     videoView2.seekTo(stopPosition2);
                     videoView2.start();
+                    sub.setVisibility(View.INVISIBLE);
                 }
                 else {
                     int k1=0;
