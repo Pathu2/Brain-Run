@@ -4,8 +4,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -44,6 +46,7 @@ public class john extends AppCompatActivity {
     Thread t;int ans =0; private Button b1,b2,sub;
     public RadioButton m1,m2,m3;
     private LinearLayout cardView1,cardView2,cardView3;
+    private String type;
 
     @Override
     public void onBackPressed() {
@@ -54,7 +57,9 @@ public class john extends AppCompatActivity {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        john.super.onBackPressed();
+//                        john.super.onBackPressed();
+                        setResult(Activity.RESULT_CANCELED);
+                        finish();
                     }
                 })
 
@@ -77,6 +82,8 @@ public class john extends AppCompatActivity {
         fstore = FirebaseFirestore.getInstance();
 
         getSupportActionBar().hide();
+
+        type = getIntent().getStringExtra("type");
 
         data = "0";
         m1 = findViewById(R.id.radioButton1);
@@ -225,7 +232,9 @@ public class john extends AppCompatActivity {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        john.super.onBackPressed();
+//                        john.super.onBackPressed();
+                        setResult(Activity.RESULT_CANCELED);
+                        finish();
                     }
                 })
 
@@ -281,13 +290,25 @@ public class john extends AppCompatActivity {
 
         documentReference1.set(user1, SetOptions.merge());
 
+        SharedPreferences shrd = getSharedPreferences("Interpretation",MODE_PRIVATE);
+        SharedPreferences.Editor shared = shrd.edit();
 
+        shared.putString("time", getData());
+        shared.putString("status1", getData1());
+        shared.putString("status2", getData2());
+        shared.putString("status3", getData3());
+        shared.putString("type", type);
+        shared.putBoolean("success", true);
+        shared.apply();
+
+        setResult(Activity.RESULT_OK);
+        finish();
 //        if (m4.isChecked()){ data4 = "1";}
 //        else { data4 = "0";}
 //        if (m5.isChecked()){ data5 = "1";}
 //        else { data5 = "0";}
-        Intent intent = new Intent(john.this, bscore4.class);
-        startActivity(intent);
+//        Intent intent = new Intent(john.this, bscore4.class);
+//        startActivity(intent);
     }
 
     public void move1 (View view){ //move front

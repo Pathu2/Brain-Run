@@ -2,18 +2,24 @@ package com.example.brainrun;
 
 import static java.lang.Integer.parseInt;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -30,6 +36,36 @@ public class Inference extends AppCompatActivity {
     SharedPreferences sharedPreferences;  //Declare Globall
     SharedPreferences.Editor editor;      //Declare Globally
     private static int Count1 = 0,Count2=0,Count3=0,Count4=0;
+    private static int I1 = 0, I2 = 0, I3 = 0, I4 = 0;
+    private testScore test_score = new testScore();
+    ActivityResultLauncher<Intent> intentLauncher = registerForActivityResult((new ActivityResultContracts.StartActivityForResult()),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    // Handle the returned Uri
+                    SharedPreferences shared = getSharedPreferences("Interpretation", MODE_PRIVATE);
+
+                    Log.i("WHY_NO_WORK", "Received data");
+//                    Log.i("WHY_NO_WORK", String.valueOf(result.getResultCode()));
+                    Log.i("WHY_NO_WORK", String.valueOf(shared.getBoolean("success", false)));
+
+                    if (shared.getBoolean("success", false)) {
+                        // Only need to verify this
+                        String type = "";
+                        try {
+                            test_score.time = shared.getString("time", null);
+                            test_score.status1 = shared.getString("status1", null);
+                            test_score.status2 = shared.getString("status2", null);
+                            test_score.status3 = shared.getString("status3", null);
+                            type = shared.getString("type", null);
+                        } catch (Exception e) {
+                            Log.i("WHY_NO_WORK", "Couldn't get strings");
+                        }
+                        showResultScreen(type);
+                        resetSuccess();
+                    }
+                }
+            });
 
     @Override
     public void onBackPressed() {
@@ -71,7 +107,7 @@ public class Inference extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inference);
-
+        sharedPreferences = getApplicationContext().getSharedPreferences("SHARED_PREFS", MODE_PRIVATE);
         //getSupportActionBar().hide();
 
         expandableView = findViewById(R.id.expand_view1);
@@ -98,26 +134,28 @@ public class Inference extends AppCompatActivity {
 
         SharedPreferences getShared9 = getSharedPreferences("Inference",MODE_PRIVATE);
         String Infer1 = getShared9.getString("adam","0");
-        int I1=parseInt(Infer1);
+        I1=parseInt(Infer1);
 
 
         SharedPreferences getShared10 = getSharedPreferences("Inference",MODE_PRIVATE);
         String Infer2 = getShared10.getString("cia","0");
-        int I2=parseInt(Infer2);
+        I2=parseInt(Infer2);
 
 
         SharedPreferences getShared11 = getSharedPreferences("Inference",MODE_PRIVATE);
         String Infer3 = getShared11.getString("ben","0");
-        int I3=parseInt(Infer3);
+        I3=parseInt(Infer3);
 
 
         SharedPreferences getShared12 = getSharedPreferences("Inference",MODE_PRIVATE);
         String Infer4 = getShared12.getString("john","0");
-        int I4=parseInt(Infer4);
+        I4=parseInt(Infer4);
 
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF5A5A")));
         bar.setTitle("What's Next");
+
+        resetSuccess();
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,9 +164,10 @@ public class Inference extends AppCompatActivity {
                 {
                     Intent intent = new Intent(Inference.this, adam.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                    overridePendingTransition (0, 0);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "b1");
+                    intentLauncher.launch(intent);
+                    ((Activity) Inference.this).overridePendingTransition(0, 0);
                     putValueInSharedPrefs(++Count1);
                 }
                 else{
@@ -141,9 +180,10 @@ public class Inference extends AppCompatActivity {
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     Intent intent = new Intent(Inference.this, adam.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                    startActivity(intent);
-                                    overridePendingTransition (0, 0);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    intent.putExtra("type", "b1");
+                                    intentLauncher.launch(intent);
+                                    ((Activity) Inference.this).overridePendingTransition(0, 0);
                                     putValueInSharedPrefs(++Count1);
                                 }
                             })
@@ -166,9 +206,10 @@ public class Inference extends AppCompatActivity {
                 {
                     Intent intent = new Intent(Inference.this, cia.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                    overridePendingTransition (0, 0);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "b2");
+                    intentLauncher.launch(intent);
+                    ((Activity) Inference.this).overridePendingTransition(0, 0);
                     putValueInSharedPrefs(++Count2);
                 }
                 else{
@@ -181,9 +222,10 @@ public class Inference extends AppCompatActivity {
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     Intent intent = new Intent(Inference.this, cia.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                    startActivity(intent);
-                                    overridePendingTransition (0, 0);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    intent.putExtra("type", "b2");
+                                    intentLauncher.launch(intent);
+                                    ((Activity) Inference.this).overridePendingTransition(0, 0);
                                     putValueInSharedPrefs(++Count2);
                                 }
                             })
@@ -206,9 +248,10 @@ public class Inference extends AppCompatActivity {
                 {
                     Intent intent = new Intent(Inference.this, ben.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                    overridePendingTransition (0, 0);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "b3");
+                    intentLauncher.launch(intent);
+                    ((Activity) Inference.this).overridePendingTransition(0, 0);
                     putValueInSharedPrefs(++Count3);
                 }
                 else{
@@ -221,9 +264,10 @@ public class Inference extends AppCompatActivity {
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     Intent intent = new Intent(Inference.this, ben.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                    startActivity(intent);
-                                    overridePendingTransition (0, 0);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    intent.putExtra("type", "b3");
+                                    intentLauncher.launch(intent);
+                                    ((Activity) Inference.this).overridePendingTransition(0, 0);
                                     putValueInSharedPrefs(++Count3);
                                 }
                             })
@@ -246,9 +290,10 @@ public class Inference extends AppCompatActivity {
                 {
                     Intent intent = new Intent(Inference.this, john.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                    overridePendingTransition (0, 0);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "b4");
+                    intentLauncher.launch(intent);
+                    ((Activity) Inference.this).overridePendingTransition(0, 0);
                     putValueInSharedPrefs(++Count4);
                 }
                 else{
@@ -261,9 +306,10 @@ public class Inference extends AppCompatActivity {
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     Intent intent = new Intent(Inference.this, john.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                    startActivity(intent);
-                                    overridePendingTransition (0, 0);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    intent.putExtra("type", "b4");
+                                    intentLauncher.launch(intent);
+                                    ((Activity) Inference.this).overridePendingTransition(0, 0);
                                     putValueInSharedPrefs(++Count4);
                                 }
                             })
@@ -279,6 +325,27 @@ public class Inference extends AppCompatActivity {
                 }
             }
         });
+
+        setText();
+
+    }
+
+    public void resetSuccess()
+    {
+        SharedPreferences.Editor edit = getSharedPreferences("Interpretation",MODE_PRIVATE).edit();
+        edit.putBoolean("success", false);
+        edit.apply();
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        setText();
+    }
+
+    public void setText()
+    {
         if (Count1>0 || I1>0){
             b1.setText("START ACTIVITY AGAIN");
             t1.setText("Start Game Again");
@@ -388,6 +455,56 @@ public class Inference extends AppCompatActivity {
         Intent intent = new Intent(Inference.this, john.class);
         startActivity(intent);
     }*/
+
+    public void showResultScreen(String type) {
+        Log.i("SANITY", test_score.time);
+        Intent intent;
+        switch (type) {
+            case "b1":
+                Log.i("WHY_NO_WORK", "Calling score b1");
+                intent = new Intent(Inference.this, bscore1.class);
+                intent.putExtra("time", test_score.time);
+                intent.putExtra("status1", test_score.status1);
+                intent.putExtra("status2", test_score.status2);
+                intent.putExtra("status3", test_score.status3);
+                startActivity(intent);
+                ((Activity) Inference.this).overridePendingTransition(0, 0);
+                break;
+            case "b2":
+                Log.i("WHY_NO_WORK", "Calling score b2");
+                intent = new Intent(Inference.this, bscore2.class);
+                intent.putExtra("time", test_score.time);
+                intent.putExtra("status1", test_score.status1);
+                intent.putExtra("status2", test_score.status2);
+                intent.putExtra("status3", test_score.status3);
+                startActivity(intent);
+                ((Activity) Inference.this).overridePendingTransition(0, 0);
+                break;
+            case "b3":
+                Log.i("WHY_NO_WORK", "Calling score b3");
+                intent = new Intent(Inference.this, bscore3.class);
+                intent.putExtra("time", test_score.time);
+                intent.putExtra("status1", test_score.status1);
+                intent.putExtra("status2", test_score.status2);
+                intent.putExtra("status3", test_score.status3);
+                startActivity(intent);
+                ((Activity) Inference.this).overridePendingTransition(0, 0);
+                break;
+            case "b4":
+                Log.i("WHY_NO_WORK", "Calling score b4");
+                intent = new Intent(Inference.this, bscore4.class);
+                intent.putExtra("time", test_score.time);
+                intent.putExtra("status1", test_score.status1);
+                intent.putExtra("status2", test_score.status2);
+                intent.putExtra("status3", test_score.status3);
+                startActivity(intent);
+                ((Activity) Inference.this).overridePendingTransition(0, 0);
+                break;
+            default:
+                break;
+        }
+    }
+
     public void putValueInSharedPrefs(int count)
     {
         editor = sharedPreferences.edit();

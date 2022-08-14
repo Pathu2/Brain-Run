@@ -6,8 +6,10 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -51,6 +53,7 @@ public class adam extends AppCompatActivity {
 
     private static final String TAG = "adamactivity";
     private ViewPager mViewPager;
+    private String type;
 
     @Override
     public void onBackPressed() {
@@ -61,7 +64,9 @@ public class adam extends AppCompatActivity {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        adam.super.onBackPressed();
+//                        adam.super.onBackPressed();
+                        setResult(Activity.RESULT_CANCELED);
+                        finish();
                     }
                 })
 
@@ -81,6 +86,7 @@ public class adam extends AppCompatActivity {
         setContentView(R.layout.activity_adam);
         getSupportActionBar().hide();
 
+        type = getIntent().getStringExtra("type");
         data = "0";
         fAuth = FirebaseAuth.getInstance();
         fstore = FirebaseFirestore.getInstance();
@@ -232,7 +238,9 @@ public class adam extends AppCompatActivity {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        adam.super.onBackPressed();
+//                        adam.super.onBackPressed();
+                        setResult(Activity.RESULT_CANCELED);
+                        finish();
                     }
                 })
 
@@ -288,10 +296,22 @@ public class adam extends AppCompatActivity {
 
         documentReference1.set(user1, SetOptions.merge());
 
+        SharedPreferences shrd = getSharedPreferences("Interpretation",MODE_PRIVATE);
+        SharedPreferences.Editor shared = shrd.edit();
 
+        shared.putString("time", getData());
+        shared.putString("status1", getData1());
+        shared.putString("status2", getData2());
+        shared.putString("status3", getData3());
+        shared.putString("type", type);
+        shared.putBoolean("success", true);
+        shared.apply();
 
-        Intent intent = new Intent(adam.this, bscore1.class);
-        startActivity(intent);
+        setResult(Activity.RESULT_OK);
+        finish();
+
+//        Intent intent = new Intent(adam.this, bscore1.class);
+//        startActivity(intent);
     }
 
 }

@@ -14,28 +14,32 @@ import android.widget.TextView;
 
 public class bscore2 extends AppCompatActivity {
 
-    String data1 = cia.getData();
-    String data = cia.getData11();
-    String data11 = cia.getData1();
-    String data22 = cia.getData2();
-    String data33 = cia.getData3();
-    String data44 = cia.getData4();
-    String data55 = cia.getData5();
+    String data1; // = cia.getData();
+//    String data = cia.getData11();
+    String data11; // = cia.getData1();
+    String data22; // = cia.getData2();
+    String data33; // = cia.getData3();
+//    String data44 = cia.getData4();
+//    String data55 = cia.getData5();
 
     private ProgressBar progressBar;
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        Intent i=new Intent(bscore2.this,Inference.class);
+//        super.onBackPressed();
+//        Intent i=new Intent(bscore2.this,Inference.class);
         finish();
-        startActivity(i);
+//        startActivity(i);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bscore2);
+        data1 = getIntent().getStringExtra("time");
+        data11 = getIntent().getStringExtra("status1");
+        data22 = getIntent().getStringExtra("status2");
+        data33 = getIntent().getStringExtra("status3");
 
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF5A5A")));
@@ -125,7 +129,8 @@ public class bscore2 extends AppCompatActivity {
 
     }
     public void move3 (View view){
-        Intent intent = new Intent(bscore2.this, interpretation.class);
-        startActivity(intent);
+//        Intent intent = new Intent(bscore2.this, interpretation.class);
+//        startActivity(intent);
+        onBackPressed();
     }
 }

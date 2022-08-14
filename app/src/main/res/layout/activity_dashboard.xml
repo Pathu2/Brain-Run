@@ -63,19 +63,20 @@
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="15dp"/>
+
                         <TextView
+                            android:id="@+id/total_score_curioussam"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_toRightOf="@id/curiousSam2"
-                            android:text="00"
                             android:layout_marginStart="16dp"
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="20dp"
-                            android:textSize="25sp"
-                            android:textColor="#dd0a0a"
                             android:layout_marginRight="200dp"
-                            android:textStyle="bold"
-                            android:id="@+id/total_score_curioussam"/>
+                            android:layout_toRightOf="@id/curiousSam2"
+                            android:text="00"
+                            android:textColor="#dd0a0a"
+                            android:textSize="25sp"
+                            android:textStyle="bold" />
                     </RelativeLayout>
 
             <TableLayout

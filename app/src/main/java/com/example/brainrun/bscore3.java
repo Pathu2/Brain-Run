@@ -15,28 +15,32 @@ import android.widget.TextView;
 
 public class bscore3 extends AppCompatActivity {
 
-    String data1 = ben.getData();
-    String data = ben.getData11();
-    String data11 = ben.getData1();
-    String data22 = ben.getData2();
-    String data33 = ben.getData3();
-    String data44 = ben.getData4();
-    String data55 = ben.getData5();
+    String data1; // = ben.getData();
+//    String data = ben.getData11();
+    String data11; // = ben.getData1();
+    String data22; // = ben.getData2();
+    String data33; // = ben.getData3();
+//    String data44 = ben.getData4();
+//    String data55 = ben.getData5();
 
     private ProgressBar progressBar;
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        Intent i=new Intent(bscore3.this,Inference.class);
+//        super.onBackPressed();
+//        Intent i=new Intent(bscore3.this,Inference.class);
         finish();
-        startActivity(i);
+//        startActivity(i);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bscore3);
+        data1 = getIntent().getStringExtra("time");
+        data11 = getIntent().getStringExtra("status1");
+        data22 = getIntent().getStringExtra("status2");
+        data33 = getIntent().getStringExtra("status3");
 
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF5A5A")));
@@ -132,8 +136,9 @@ public class bscore3 extends AppCompatActivity {
         //textviews.setText(inf+"/100");
 
     }
-//    public void move3 (View view){
+    public void move3 (View view){
 //        Intent intent = new Intent(bscore3.this, interpretation.class);
 //        startActivity(intent);
-//    }
+        onBackPressed();
+    }
 }

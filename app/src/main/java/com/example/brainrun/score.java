@@ -14,28 +14,32 @@ import android.widget.TextView;
 
 public class score extends AppCompatActivity {
 
-    String data1 = analogy.getData();
-    String data = analogy.getData11();
-    String data11 = analogy.getData1();
-    String data22 = analogy.getData2();
-    String data33 = analogy.getData3();
-    String data44 = analogy.getData4();
-    String data55 = analogy.getData5();
+    String data1; // = analogy.getData();
+//    String data = analogy.getData11();
+    String data11; // = analogy.getData1();
+    String data22; // = analogy.getData2();
+    String data33; // = analogy.getData3();
+//    String data44 = analogy.getData4();
+//    String data55 = analogy.getData5();
 
     private ProgressBar progressBar;
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        Intent i=new Intent(score.this,interpretation.class);
+//        super.onBackPressed();
+//        Intent i=new Intent(score.this,interpretation.class);
         finish();
-        startActivity(i);
+//        startActivity(i);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
+        data1 = getIntent().getStringExtra("time");
+        data11 = getIntent().getStringExtra("status1");
+        data22 = getIntent().getStringExtra("status2");
+        data33 = getIntent().getStringExtra("status3");
 
         //getSupportActionBar().hide();
         ActionBar bar = getSupportActionBar();
@@ -129,7 +133,8 @@ public class score extends AppCompatActivity {
 
     }
     public void move3 (View view){
-        Intent intent = new Intent(score.this, interpretation.class);
-        startActivity(intent);
+//        Intent intent = new Intent(score.this, interpretation.class);
+//        startActivity(intent);
+        onBackPressed();
     }
 }

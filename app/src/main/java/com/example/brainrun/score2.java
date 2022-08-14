@@ -14,28 +14,32 @@ import android.widget.TextView;
 
 public class score2 extends AppCompatActivity {
 
-    String data1 = graph.getData();
-    String data = graph.getData11();
-    String data11 = graph.getData1();
-    String data22 = graph.getData2();
-    String data33 = graph.getData3();
-    String data44 = graph.getData4();
-    String data55 = graph.getData5();
+    String data1; // = graph.getData();
+//    String data = graph.getData11();
+    String data11; // = graph.getData1();
+    String data22; // = graph.getData2();
+    String data33; // = graph.getData3();
+//    String data44 = graph.getData4();
+//    String data55 = graph.getData5();
 
     private ProgressBar progressBar;
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        Intent i=new Intent(score2.this,interpretation.class);
+//        super.onBackPressed();
+//        Intent i=new Intent(score2.this,interpretation.class);
         finish();
-        startActivity(i);
+//        startActivity(i);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score2);
+        data1 = getIntent().getStringExtra("time");
+        data11 = getIntent().getStringExtra("status1");
+        data22 = getIntent().getStringExtra("status2");
+        data33 = getIntent().getStringExtra("status3");
 
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF5A5A")));
@@ -125,7 +129,8 @@ public class score2 extends AppCompatActivity {
     }
 
     public void move3 (View view){
-        Intent intent = new Intent(score2.this, interpretation.class);
-        startActivity(intent);
+//        Intent intent = new Intent(score2.this, interpretation.class);
+//        startActivity(intent);
+        onBackPressed();
     }
 }

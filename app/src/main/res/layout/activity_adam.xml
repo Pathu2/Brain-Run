@@ -331,15 +331,15 @@
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/relative_layout"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@id/timer"
+        android:background="@drawable/gradient_button"
         android:padding="2dp"
         android:text="next"
         android:textColor="#fff"
-        android:textSize="12sp"
-        android:background="@drawable/gradient_button"
-        android:layout_toRightOf="@id/timer"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/relative_layout"/>
+        android:textSize="12sp" />
 
     <Button
         android:id="@+id/button6"

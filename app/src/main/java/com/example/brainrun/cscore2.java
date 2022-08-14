@@ -13,28 +13,32 @@ import android.widget.TextView;
 
 public class cscore2 extends AppCompatActivity {
 
-    String data1 = car.getData();
-    String data = car.getData11();
-    String data11 = car.getData1();
-    String data22 = car.getData2();
-    String data33 = car.getData3();
-    String data44 = car.getData4();
-    String data55 = car.getData5();
+    String data1; // = car.getData();
+//    String data = car.getData11();
+    String data11; // = car.getData1();
+    String data22; // = car.getData2();
+    String data33; // = car.getData3();
+//    String data44 = car.getData4();
+//    String data55 = car.getData5();
 
     private ProgressBar progressBar;
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        Intent i=new Intent(cscore2.this,Evaluation.class);
+//        super.onBackPressed();
+//        Intent i=new Intent(cscore2.this,Evaluation.class);
         finish();
-        startActivity(i);
+//        startActivity(i);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cscore2);
+        data1 = getIntent().getStringExtra("time");
+        data11 = getIntent().getStringExtra("status1");
+        data22 = getIntent().getStringExtra("status2");
+        data33 = getIntent().getStringExtra("status3");
 
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF5A5A")));

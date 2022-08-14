@@ -13,28 +13,33 @@ import android.widget.TextView;
 
 public class ascore3 extends AppCompatActivity {
 
-    String data1 = graphical.getData();
-    String data = graphical.getData11();
-    String data11 = graphical.getData1();
-    String data22 = graphical.getData2();
-    String data33 = graphical.getData3();
-    String data44 = graphical.getData4();
-    String data55 = graphical.getData5();
+    String data1; // = graphical.getData();
+//    String data = graphical.getData11();
+    String data11; // = graphical.getData1();
+    String data22; // = graphical.getData2();
+    String data33; // = graphical.getData3();
+//    String data44 = graphical.getData4();
+//    String data55 = graphical.getData5();
 
     private ProgressBar progressBar;
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        Intent i=new Intent(ascore3.this,analysis.class);
+//        super.onBackPressed();
+//        Intent i=new Intent(ascore3.this,analysis.class);
+//        super.finish();
         finish();
-        startActivity(i);
+//        startActivity(i);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ascore3);
+        data1 = getIntent().getStringExtra("time");
+        data11 = getIntent().getStringExtra("status1");
+        data22 = getIntent().getStringExtra("status2");
+        data33 = getIntent().getStringExtra("status3");
         //getSupportActionBar().hide();
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF5A5A")));

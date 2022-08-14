@@ -14,25 +14,29 @@ import android.widget.TextView;
 
 public class score4 extends AppCompatActivity {
 
-    String data1 = oddOne.getData();
-    String data11 = oddOne.getData1();
-    String data22 = oddOne.getData2();
-    String data33 = oddOne.getData3();
+    String data1; // = oddOne.getData();
+    String data11; // = oddOne.getData1();
+    String data22; // = oddOne.getData2();
+    String data33; // = oddOne.getData3();
 
     private ProgressBar progressBar;
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        Intent i=new Intent(score4.this,interpretation.class);
+//        super.onBackPressed();
+//        Intent i=new Intent(score4.this,interpretation.class);
         finish();
-        startActivity(i);
+//        startActivity(i);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score4);
+        data1 = getIntent().getStringExtra("time");
+        data11 = getIntent().getStringExtra("status1");
+        data22 = getIntent().getStringExtra("status2");
+        data33 = getIntent().getStringExtra("status3");
 
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF5A5A")));
@@ -116,7 +120,8 @@ public class score4 extends AppCompatActivity {
         //textviews.setText(inf+"/100");
     }
     public void move3 (View view){
-        Intent intent = new Intent(score4.this, interpretation.class);
-        startActivity(intent);
+//        Intent intent = new Intent(score4.this, interpretation.class);
+//        startActivity(intent);
+        onBackPressed();
     }
 }

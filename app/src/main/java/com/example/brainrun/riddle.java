@@ -4,8 +4,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -40,6 +42,7 @@ public class riddle extends AppCompatActivity {
     boolean continueThread=true;
     Thread t;int ans =0;private Button b1,b2,sub;
     public RadioButton m1,m2,m3,m4,m5;
+    private String type;
 
 
     @Override
@@ -51,7 +54,9 @@ public class riddle extends AppCompatActivity {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        riddle.super.onBackPressed();
+                        setResult(Activity.RESULT_CANCELED);
+                        finish();
+//                        riddle.super.onBackPressed();
                     }
                 })
 
@@ -71,6 +76,7 @@ public class riddle extends AppCompatActivity {
         setContentView(R.layout.activity_riddle);
 
         data = "0";
+        type = getIntent().getStringExtra("type");
 
         getSupportActionBar().hide();
 
@@ -173,8 +179,23 @@ public class riddle extends AppCompatActivity {
 //        else { data4 = "0";}
 //        if (m5.isChecked()){ data5 = "1";}
 //        else { data5 = "0";}
-        Intent intent = new Intent(riddle.this, score3.class);
-        startActivity(intent);
+
+        SharedPreferences shrd = getSharedPreferences("Interpretation",MODE_PRIVATE);
+        SharedPreferences.Editor shared = shrd.edit();
+
+        shared.putString("time", getData());
+        shared.putString("status1", getData1());
+        shared.putString("status2", getData2());
+        shared.putString("status3", getData3());
+        shared.putString("type", type);
+        shared.putBoolean("success", true);
+        shared.apply();
+
+        setResult(Activity.RESULT_OK);
+        finish();
+        
+//        Intent intent = new Intent(riddle.this, score3.class);
+//        startActivity(intent);
     }
 
     public void move1 (View view){ //move front
@@ -215,7 +236,9 @@ public class riddle extends AppCompatActivity {
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            riddle.super.onBackPressed();
+                            setResult(Activity.RESULT_CANCELED);
+                            finish();
+//                            riddle.super.onBackPressed();
                         }
                     })
 

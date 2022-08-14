@@ -4,9 +4,12 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -42,6 +45,7 @@ public class sunday1 extends AppCompatActivity {
     private LinearLayout cardView1,cardView2,cardView3;
 
     private RadioButton rb1,rb2,rb3,rb4,rb21,rb22,rb23,rb24,rb31,rb32,rb33,rb34;
+    private String type;
 
     @Override
     public void onBackPressed() {
@@ -52,7 +56,9 @@ public class sunday1 extends AppCompatActivity {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        sunday1.super.onBackPressed();
+                        setResult(Activity.RESULT_CANCELED);
+//                        sunday1.super.onBackPressed();
+                        finish();
                     }
                 })
 
@@ -72,6 +78,9 @@ public class sunday1 extends AppCompatActivity {
         setContentView(R.layout.activity_sunday1);
 
         data = "0";
+
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("SHARED_PREFS", MODE_PRIVATE);
+        type = getIntent().getStringExtra("type");
 
         fAuth = FirebaseAuth.getInstance();
         fstore = FirebaseFirestore.getInstance();
@@ -349,9 +358,23 @@ public class sunday1 extends AppCompatActivity {
 
         documentReference1.set(user1, SetOptions.merge());
 
+        SharedPreferences shrd = getSharedPreferences("analysis",MODE_PRIVATE);
+        SharedPreferences.Editor shared = shrd.edit();
 
-        Intent intent = new Intent(sunday1.this, ascore4.class);
-        startActivity(intent);
+        shared.putString("time", getData());
+        shared.putString("status1", getData1());
+        shared.putString("status2", getData2());
+        shared.putString("status3", getData3());
+        shared.putString("type", type);
+        shared.putBoolean("success", true);
+        shared.apply();
+
+        Log.i("WHY_NO_WORK", "Sent Data");
+
+        setResult(Activity.RESULT_OK);
+        finish();
+//        Intent intent = new Intent(sunday1.this, ascore4.class);
+//        startActivity(intent);
     }
 
     public void move1 (View view){ //move front
@@ -384,7 +407,9 @@ public class sunday1 extends AppCompatActivity {
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            sunday1.super.onBackPressed();
+//                            sunday1.super.onBackPressed();
+                            setResult(Activity.RESULT_CANCELED);
+                            finish();
                         }
                     })
 

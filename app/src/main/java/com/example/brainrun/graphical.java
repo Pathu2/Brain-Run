@@ -4,9 +4,12 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -31,6 +34,8 @@ public class graphical extends AppCompatActivity {
     private static String data4 = "0";
     private static String data5 = "0";
 
+    private String type;
+
     FirebaseAuth fAuth;
     FirebaseFirestore fstore;
     String userID;
@@ -54,7 +59,10 @@ public class graphical extends AppCompatActivity {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        graphical.super.onBackPressed();
+                        setResult(Activity.RESULT_CANCELED);
+                        Log.i("WHY_NO_WORK", "in back press");
+//                        graphical.super.onBackPressed();
+                        finish();
                     }
                 })
 
@@ -72,6 +80,9 @@ public class graphical extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graphical);
+
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("SHARED_PREFS", MODE_PRIVATE);
+        type = getIntent().getStringExtra("type");
 
         data = "0";
 
@@ -775,8 +786,24 @@ public class graphical extends AppCompatActivity {
 //        else { data4 = "0";}
 //        if (m5.isChecked()){ data5 = "1";}
 //        else { data5 = "0";}
-        Intent intent = new Intent(graphical.this, ascore3.class);
-        startActivity(intent);
+
+        SharedPreferences shrd = getSharedPreferences("analysis",MODE_PRIVATE);
+        SharedPreferences.Editor shared = shrd.edit();
+
+        shared.putString("time", getData());
+        shared.putString("status1", getData1());
+        shared.putString("status2", getData2());
+        shared.putString("status3", getData3());
+        shared.putString("type", type);
+        shared.putBoolean("success", true);
+        shared.apply();
+
+        Log.i("WHY_NO_WORK", "Sent Data");
+
+        setResult(Activity.RESULT_OK);
+        finish();
+//        Intent intent = new Intent(graphical.this, ascore3.class);
+//        startActivity(intent);
     }
 
     public void move1 (View view){ //move front
@@ -817,7 +844,9 @@ public class graphical extends AppCompatActivity {
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            graphical.super.onBackPressed();
+                            setResult(Activity.RESULT_CANCELED);
+//                            graphical.super.onBackPressed();
+                            finish();
                         }
                     })
 

@@ -1,12 +1,16 @@
 package com.example.brainrun;
 
+import androidx.activity.result.ActivityResult;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -30,6 +34,7 @@ public class gifts extends AppCompatActivity {
     private static String data3 = "0";
     private static String data4 = "0";
     private static String data5 = "0";
+    private String type;
 
     FirebaseAuth fAuth;
     FirebaseFirestore fstore;
@@ -51,7 +56,9 @@ public class gifts extends AppCompatActivity {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        gifts.super.onBackPressed();
+                        setResult(Activity.RESULT_CANCELED);
+//                        gifts.super.onBackPressed();
+                        finish();
                     }
                 })
 
@@ -63,12 +70,16 @@ public class gifts extends AppCompatActivity {
                 });
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
+
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gifts);
+
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("SHARED_PREFS", MODE_PRIVATE);
+        type = getIntent().getStringExtra("type");
 
         fAuth = FirebaseAuth.getInstance();
         fstore = FirebaseFirestore.getInstance();
@@ -162,9 +173,29 @@ public class gifts extends AppCompatActivity {
 
         documentReference1.set(user1, SetOptions.merge());
 
+        // Possible to use startActivityForResult()
+//        Intent data = new Intent();
+//        data.putExtra("time", getData());
+//        data.putExtra("status1", getData1());
+//        data.putExtra("status2", getData2());
+//        data.putExtra("status3", getData3());
+//        data.putExtra("type", type);
 
-        Intent intent = new Intent(gifts.this, ascore1.class);
-        startActivity(intent);
+        SharedPreferences shrd = getSharedPreferences("analysis",MODE_PRIVATE);
+        SharedPreferences.Editor shared = shrd.edit();
+
+        shared.putString("time", getData());
+        shared.putString("status1", getData1());
+        shared.putString("status2", getData2());
+        shared.putString("status3", getData3());
+        shared.putString("type", type);
+        shared.putBoolean("success", true);
+        shared.apply();
+
+        setResult(Activity.RESULT_OK);
+        finish();
+//        Intent intent = new Intent(gifts.this, ascore1.class);
+//        startActivity(intent);
     }
 
     public void move1 (View view){ //move front
@@ -205,7 +236,9 @@ public class gifts extends AppCompatActivity {
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            gifts.super.onBackPressed();
+                            setResult(Activity.RESULT_CANCELED);
+                            finish();
+//                            gifts.super.onBackPressed();
                         }
                     })
 

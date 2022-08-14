@@ -2,18 +2,24 @@ package com.example.brainrun;
 
 import static java.lang.Integer.parseInt;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -27,6 +33,36 @@ public class interpretation extends AppCompatActivity {
     SharedPreferences sharedPreferences;  //Declare Globall
     SharedPreferences.Editor editor;      //Declare Globally
     private static int Count1 = 0,Count2=0,Count3=0,Count4=0;
+    private static int A1 = 0, A2 = 0, A3 = 0, A4 = 0;
+    private testScore test_score = new testScore();
+    ActivityResultLauncher<Intent> intentLauncher = registerForActivityResult((new ActivityResultContracts.StartActivityForResult()),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    // Handle the returned Uri
+                    SharedPreferences shared = getSharedPreferences("Interpretation", MODE_PRIVATE);
+
+                    Log.i("WHY_NO_WORK", "Received data");
+//                    Log.i("WHY_NO_WORK", String.valueOf(result.getResultCode()));
+                    Log.i("WHY_NO_WORK", String.valueOf(shared.getBoolean("success", false)));
+
+                    if (shared.getBoolean("success", false)) {
+                        // Only need to verify this
+                        String type = "";
+                        try {
+                            test_score.time = shared.getString("time", null);
+                            test_score.status1 = shared.getString("status1", null);
+                            test_score.status2 = shared.getString("status2", null);
+                            test_score.status3 = shared.getString("status3", null);
+                            type = shared.getString("type", null);
+                        } catch (Exception e) {
+                            Log.i("WHY_NO_WORK", "Couldn't get strings");
+                        }
+                        showResultScreen(type);
+                        resetSuccess();
+                    }
+                }
+            });
 
     @Override
     public void onBackPressed() {
@@ -68,7 +104,7 @@ public class interpretation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interpretation);
-
+        sharedPreferences = getApplicationContext().getSharedPreferences("SHARED_PREFS", MODE_PRIVATE);
         //getSupportActionBar().hide();
 
         expandableView = findViewById(R.id.expand_view1);
@@ -93,25 +129,27 @@ public class interpretation extends AppCompatActivity {
 
         SharedPreferences getShared4 = getSharedPreferences("Interpretation",MODE_PRIVATE);
         String Inter4 = getShared4.getString("oddone","0");
-        int A1=parseInt(Inter4);
+        A1=parseInt(Inter4);
 
         SharedPreferences getShared1 = getSharedPreferences("Interpretation",MODE_PRIVATE);
         String Inter1 = getShared1.getString("analogy","0");
-        int A4=parseInt(Inter1);
+        A4=parseInt(Inter1);
 
 
         SharedPreferences getShared2 = getSharedPreferences("Interpretation",MODE_PRIVATE);
         String Inter2 = getShared2.getString("graph","0");
-        int A3=parseInt(Inter2);
+        A3=parseInt(Inter2);
 
 
         SharedPreferences getShared3 = getSharedPreferences("Interpretation",MODE_PRIVATE);
         String Inter3 = getShared3.getString("riddle","0");
-        int A2=parseInt(Inter3);
+        A2=parseInt(Inter3);
 
         ActionBar bar = getSupportActionBar();
         bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF5A5A")));
         bar.setTitle("Curious Sam");
+
+        resetSuccess();
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,9 +158,11 @@ public class interpretation extends AppCompatActivity {
                 {
                     Intent intent = new Intent(interpretation.this, oddOne.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                    overridePendingTransition (0, 0);
+//                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "b1");
+                    intentLauncher.launch(intent);
+                    ((Activity) interpretation.this).overridePendingTransition(0, 0);
                     putValueInSharedPrefs(++Count1);
                 }
                 else{
@@ -135,9 +175,11 @@ public class interpretation extends AppCompatActivity {
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     Intent intent = new Intent(interpretation.this, oddOne.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                    startActivity(intent);
-                                    overridePendingTransition (0, 0);
+//                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    intent.putExtra("type", "b1");
+                                    intentLauncher.launch(intent);
+                                    ((Activity) interpretation.this).overridePendingTransition(0, 0);
                                     putValueInSharedPrefs(++Count1);
                                 }
                             })
@@ -163,9 +205,11 @@ public class interpretation extends AppCompatActivity {
                 {
                     Intent intent = new Intent(interpretation.this, riddle.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                    overridePendingTransition (0, 0);
+//                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "b2");
+                    intentLauncher.launch(intent);
+                    ((Activity) interpretation.this).overridePendingTransition(0, 0);
                     putValueInSharedPrefs(++Count2);
                 }
                 else{
@@ -178,9 +222,11 @@ public class interpretation extends AppCompatActivity {
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     Intent intent = new Intent(interpretation.this, riddle.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                    startActivity(intent);
-                                    overridePendingTransition (0, 0);
+//                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    intent.putExtra("type", "b2");
+                                    intentLauncher.launch(intent);
+                                    ((Activity) interpretation.this).overridePendingTransition(0, 0);
                                     putValueInSharedPrefs(++Count2);
                                 }
                             })
@@ -204,9 +250,11 @@ public class interpretation extends AppCompatActivity {
                 {
                     Intent intent = new Intent(interpretation.this, graph.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                    overridePendingTransition (0, 0);
+//                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "b3");
+                    intentLauncher.launch(intent);
+                    ((Activity) interpretation.this).overridePendingTransition(0, 0);
                     putValueInSharedPrefs(++Count3);
                 }
                 else{
@@ -219,9 +267,11 @@ public class interpretation extends AppCompatActivity {
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     Intent intent = new Intent(interpretation.this, graph.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                    startActivity(intent);
-                                    overridePendingTransition (0, 0);
+//                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    intent.putExtra("type", "b3");
+                                    intentLauncher.launch(intent);
+                                    ((Activity) interpretation.this).overridePendingTransition(0, 0);
                                     putValueInSharedPrefs(++Count3);
                                 }
                             })
@@ -245,9 +295,11 @@ public class interpretation extends AppCompatActivity {
                 {
                     Intent intent = new Intent(interpretation.this, analogy.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                    overridePendingTransition (0, 0);
+//                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "b4");
+                    intentLauncher.launch(intent);
+                    ((Activity) interpretation.this).overridePendingTransition(0, 0);
                     putValueInSharedPrefs(++Count4);
                 }
                 else{
@@ -260,9 +312,11 @@ public class interpretation extends AppCompatActivity {
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     Intent intent = new Intent(interpretation.this, analogy.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                    startActivity(intent);
-                                    overridePendingTransition (0, 0);
+//                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    intent.putExtra("type", "b4");
+                                    intentLauncher.launch(intent);
+                                    ((Activity) interpretation.this).overridePendingTransition(0, 0);
                                     putValueInSharedPrefs(++Count4);
                                 }
                             })
@@ -278,6 +332,26 @@ public class interpretation extends AppCompatActivity {
                 }
             }
         });
+
+        setText();
+    }
+
+    public void resetSuccess()
+    {
+            SharedPreferences.Editor edit = getSharedPreferences("Interpretation",MODE_PRIVATE).edit();
+            edit.putBoolean("success", false);
+            edit.apply();
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        setText();
+    }
+
+    public void setText()
+    {
         if (Count1>0 || A1>0){
             b1.setText("START ACTIVITY AGAIN");
             t1.setText("Start Game Again");
@@ -340,6 +414,54 @@ public class interpretation extends AppCompatActivity {
         }
     }
 
+    public void showResultScreen(String type) {
+        Log.i("SANITY", test_score.time);
+        Intent intent;
+        switch (type) {
+            case "b1":
+                Log.i("WHY_NO_WORK", "Calling score b1");
+                intent = new Intent(interpretation.this, score4.class);
+                intent.putExtra("time", test_score.time);
+                intent.putExtra("status1", test_score.status1);
+                intent.putExtra("status2", test_score.status2);
+                intent.putExtra("status3", test_score.status3);
+                startActivity(intent);
+                ((Activity) interpretation.this).overridePendingTransition(0, 0);
+                break;
+            case "b2":
+                Log.i("WHY_NO_WORK", "Calling score b2");
+                intent = new Intent(interpretation.this, score3.class);
+                intent.putExtra("time", test_score.time);
+                intent.putExtra("status1", test_score.status1);
+                intent.putExtra("status2", test_score.status2);
+                intent.putExtra("status3", test_score.status3);
+                startActivity(intent);
+                ((Activity) interpretation.this).overridePendingTransition(0, 0);
+                break;
+            case "b3":
+                Log.i("WHY_NO_WORK", "Calling score b3");
+                intent = new Intent(interpretation.this, score2.class);
+                intent.putExtra("time", test_score.time);
+                intent.putExtra("status1", test_score.status1);
+                intent.putExtra("status2", test_score.status2);
+                intent.putExtra("status3", test_score.status3);
+                startActivity(intent);
+                ((Activity) interpretation.this).overridePendingTransition(0, 0);
+                break;
+            case "b4":
+                Log.i("WHY_NO_WORK", "Calling score b4");
+                intent = new Intent(interpretation.this, score.class);
+                intent.putExtra("time", test_score.time);
+                intent.putExtra("status1", test_score.status1);
+                intent.putExtra("status2", test_score.status2);
+                intent.putExtra("status3", test_score.status3);
+                startActivity(intent);
+                ((Activity) interpretation.this).overridePendingTransition(0, 0);
+                break;
+            default:
+                break;
+        }
+    }
 
     public void putValueInSharedPrefs(int count)
     {
