@@ -1,36 +1,26 @@
 {
   "project_info": {
-    "project_number": "710757459562",
-    "project_id": "brain-run-50811",
-    "storage_bucket": "brain-run-50811.appspot.com"
+    "project_number": "726767351128",
+    "project_id": "brain-run-48651",
+    "storage_bucket": "brain-run-48651.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:710757459562:android:ba6ec55a5758e563d48c13",
+        "mobilesdk_app_id": "1:726767351128:android:2361a76aca0285da39e12d",
         "android_client_info": {
           "package_name": "com.example.brainrun"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "710757459562-9qs582hns7b4p50oddnhsfkum2g7ebq7.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDbAMyCret7sXR39wwau_u9pyrSIwN1xG0"
+          "current_key": "AIzaSyC5vMEyeKwuUISb-OWxXhfL9DTYPPGz9Ts"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "710757459562-9qs582hns7b4p50oddnhsfkum2g7ebq7.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

@@ -1,9 +1,11 @@
 package com.example.brainrun;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,9 +17,13 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
@@ -768,11 +774,42 @@ public class graphical extends AppCompatActivity {
 
         userID = fAuth.getCurrentUser().getUid();
         DocumentReference documentReference1 = fstore.collection("users").document(userID).collection("Blake's Adventure").document(userID);
-
-        Map<String,Object> user1 = new HashMap<>();
-        user1.put("Graphical Night",inf);
-
-        documentReference1.set(user1, SetOptions.merge());
+        documentReference1.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()){
+                    DocumentSnapshot documentSnapshot = task.getResult();
+                    if(documentSnapshot.exists()){
+                        Map<String, Object> userData = documentSnapshot.getData();
+                        assert userData != null;
+                        int maxAdamDays = Integer.parseInt(userData.getOrDefault("Max Graphical Night", "0").toString());
+                        int minAdamDays = Integer.parseInt(userData.getOrDefault("Min Graphical Night", "0").toString());
+                        int numberOfAttempts = Integer.parseInt(userData.getOrDefault("Number Of Attempts Graphical Night", "0").toString()) + 1;
+                        int total = Integer.parseInt(userData.getOrDefault("Graphical Night Total", "0").toString()) + inf;
+                        if(inf>maxAdamDays){
+                            maxAdamDays = inf;
+                        }
+                        if(minAdamDays==-1 || minAdamDays>inf){
+                            minAdamDays = inf;
+                        }
+//                        float avg = ((float) total /numberOfAttempts);
+//                        @SuppressLint("DefaultLocale") String formattedAvg = String.format("%.2f", avg);
+                        Map<String,Object> user1 = new HashMap<>();
+                        user1.put("Graphical Night",String.valueOf(inf));
+                        user1.put("Min Graphical Night", String.valueOf(minAdamDays));
+                        user1.put("Max Graphical Night", String.valueOf(maxAdamDays));
+                        user1.put("Number Of Attempts Graphical Night", String.valueOf(numberOfAttempts));
+                        user1.put("Graphical Night Total", total);
+                        documentReference1.set(user1, SetOptions.merge());
+                    } else{
+                        Toast.makeText(getApplicationContext(), "Unable to update the scores", Toast.LENGTH_LONG).show();
+                    }
+                } else{
+                    Toast.makeText(getApplicationContext(), "Unable to update the scores", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        
 
         //        if (m1.isChecked()){ data1 = "1";}
 //        else { data1 = "0";}

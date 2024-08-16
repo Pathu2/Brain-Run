@@ -126,58 +126,58 @@ public class MainActivity extends AppCompatActivity {
 
         userID = fAuth.getCurrentUser().getUid();
 
-        DocumentReference documentReference1 = fstore.collection("users").document(userID).collection("Curious Sam").document(userID);
-        Map<String,Object> user1 = new HashMap<>();
-        user1.put("Bank Thief",Inter1);
-        user1.put("Playing with Graphs",Inter2);
-        user1.put("Riddles",Inter3);
-        user1.put("Odd One Out",Inter4);
-        documentReference1.set(user1, SetOptions.merge());
-
-        DocumentReference documentReference2 = fstore.collection("users").document(userID).collection("Blake's Adventure").document(userID);
-        Map<String,Object> user2 = new HashMap<>();
-        user2.put("Blake's Boxes",analysis1);
-        user2.put("Detective Blake",analysis2);
-        user2.put("Graphical Night",analysis3);
-        user2.put("Sunday's Game",analysis4);
-        documentReference2.set(user2, SetOptions.merge());
-
-        DocumentReference documentReference3 = fstore.collection("users").document(userID).collection("What's Next").document(userID);
-        Map<String,Object> user3 = new HashMap<>();
-        user3.put("Adam's Day",Infer1);
-        user3.put("Cia's Surprise",Infer2);
-        user3.put("Dane's Drawing",Infer3);
-        user3.put("John and Norman",Infer4);
-        documentReference3.set(user3, SetOptions.merge());
-
-        DocumentReference documentReference4 = fstore.collection("users").document(userID).collection("Perfect Estimation").document(userID);
-        Map<String,Object> user4 = new HashMap<>();
-        user4.put("Chaos at School",Eval1);
-        user4.put("Peter's Dilemma",Eval2);
-        user4.put("Ben's Trip",Eval3);
-        user4.put("Football Match",Eval4);
-        documentReference4.set(user4, SetOptions.merge());
-
-
-        DocumentReference documentReference5 = fstore.collection("users").document(userID);
-        Map<String,Object> user = new HashMap<>();
-        user.put("Bank Thief",Inter1);
-        user.put("Playing with Graphs",Inter2);
-        user.put("Riddles",Inter3);
-        user.put("Odd One Out",Inter4);
-        user.put("Blake's Boxes",analysis1);
-        user.put("Detective Blake",analysis2);
-        user.put("Graphical Night",analysis3);
-        user.put("Sunday's Game",analysis4);
-        user.put("Adam's Day",Infer1);
-        user.put("Cia's Surprise",Infer2);
-        user.put("Dane's Drawing",Infer3);
-        user.put("John and Norman",Infer4);
-        user.put("Chaos at School",Eval1);
-        user.put("Peter's Dilemma",Eval2);
-        user.put("Ben's Trip",Eval3);
-        user.put("Football Match",Eval4);
-        documentReference5.set(user, SetOptions.merge());
+//        DocumentReference documentReference1 = fstore.collection("users").document(userID).collection("Curious Sam").document(userID);
+//        Map<String,Object> user1 = new HashMap<>();
+//        user1.put("Bank Thief",Inter1);
+//        user1.put("Playing with Graphs",Inter2);
+//        user1.put("Riddles",Inter3);
+//        user1.put("Odd One Out",Inter4);
+//        documentReference1.set(user1, SetOptions.merge());
+//
+//        DocumentReference documentReference2 = fstore.collection("users").document(userID).collection("Blake's Adventure").document(userID);
+//        Map<String,Object> user2 = new HashMap<>();
+//        user2.put("Blake's Boxes",analysis1);
+//        user2.put("Detective Blake",analysis2);
+//        user2.put("Graphical Night",analysis3);
+//        user2.put("Sunday's Game",analysis4);
+//        documentReference2.set(user2, SetOptions.merge());
+//
+//        DocumentReference documentReference3 = fstore.collection("users").document(userID).collection("What's Next").document(userID);
+//        Map<String,Object> user3 = new HashMap<>();
+//        user3.put("Adam's Day",Infer1);
+//        user3.put("Cia's Surprise",Infer2);
+//        user3.put("Dane's Drawing",Infer3);
+//        user3.put("John and Norman",Infer4);
+//        documentReference3.set(user3, SetOptions.merge());
+//
+//        DocumentReference documentReference4 = fstore.collection("users").document(userID).collection("Perfect Estimation").document(userID);
+//        Map<String,Object> user4 = new HashMap<>();
+//        user4.put("Chaos at School",Eval1);
+//        user4.put("Peter's Dilemma",Eval2);
+//        user4.put("Ben's Trip",Eval3);
+//        user4.put("Football Match",Eval4);
+//        documentReference4.set(user4, SetOptions.merge());
+//
+//
+//        DocumentReference documentReference5 = fstore.collection("users").document(userID);
+//        Map<String,Object> user = new HashMap<>();
+//        user.put("Bank Thief",Inter1);
+//        user.put("Playing with Graphs",Inter2);
+//        user.put("Riddles",Inter3);
+//        user.put("Odd One Out",Inter4);
+//        user.put("Blake's Boxes",analysis1);
+//        user.put("Detective Blake",analysis2);
+//        user.put("Graphical Night",analysis3);
+//        user.put("Sunday's Game",analysis4);
+//        user.put("Adam's Day",Infer1);
+//        user.put("Cia's Surprise",Infer2);
+//        user.put("Dane's Drawing",Infer3);
+//        user.put("John and Norman",Infer4);
+//        user.put("Chaos at School",Eval1);
+//        user.put("Peter's Dilemma",Eval2);
+//        user.put("Ben's Trip",Eval3);
+//        user.put("Football Match",Eval4);
+//        documentReference5.set(user, SetOptions.merge());
     }
 
     @Override

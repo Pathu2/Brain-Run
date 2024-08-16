@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.brainrun"
-    android:screenOrientation="portrait">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
         android:allowBackup="true"
@@ -9,18 +8,27 @@
         android:label="@string/app_name"
         android:largeHeap="true"
         android:roundIcon="@drawable/br"
-        android:screenOrientation="sensorPortrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.BrainRun">
+
+        <!-- Initialization Provider: Remove the tools:node="remove" if not required -->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false" />
+
+        <!-- Main Activity -->
         <activity
+            android:exported="true"
             android:name=".SplashLogo"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Define all other activities here -->
         <activity
             android:name=".Dashboard"
             android:screenOrientation="portrait" />
@@ -164,13 +172,13 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".splash"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" />
 
-        </activity>
-
+        <!-- Meta-data for preloaded fonts -->
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
     </application>
 
 </manifest>

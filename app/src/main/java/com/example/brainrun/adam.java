@@ -1,11 +1,13 @@
 package com.example.brainrun;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,15 +21,20 @@ import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class adam extends AppCompatActivity {
 
@@ -54,6 +61,8 @@ public class adam extends AppCompatActivity {
     private static final String TAG = "adamactivity";
     private ViewPager mViewPager;
     private String type;
+
+
 
     @Override
     public void onBackPressed() {
@@ -283,18 +292,48 @@ public class adam extends AppCompatActivity {
         a2 = Integer.parseInt(data2);
         a3 = Integer.parseInt(data3);
         r = count1;
-
         if(r <= t) {r = (int)t;}
 
         inf = (int)((a1*m1 + a2*m2 + a3*m3)*(t/r));
 
         userID = fAuth.getCurrentUser().getUid();
         DocumentReference documentReference1 = fstore.collection("users").document(userID).collection("What's Next").document(userID);
+        documentReference1.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()){
+                    DocumentSnapshot documentSnapshot = task.getResult();
+                    if(documentSnapshot.exists()){
+                        Map<String, Object> userData = documentSnapshot.getData();
+                        assert userData != null;
+                        int maxAdamDays = Integer.parseInt(userData.getOrDefault("Max Adam's Day", "0").toString());
+                        int minAdamDays = Integer.parseInt(userData.getOrDefault("Min Adam's Day", "0").toString());
+                        int numberOfAttempts = Integer.parseInt(userData.getOrDefault("Number Of Attempts Adam's Day", "0").toString()) + 1;
+                        int total = Integer.parseInt(userData.getOrDefault("Adam's Day Total", "0").toString()) + inf;
+                        if(inf>maxAdamDays){
+                            maxAdamDays = inf;
+                        }
+                        if(minAdamDays==-1 || minAdamDays>inf){
+                            minAdamDays = inf;
+                        }
+//                        float avg = ((float) total /numberOfAttempts);
+//                        @SuppressLint("DefaultLocale") String formattedAvg = String.format("%.2f", avg);
+                        Map<String,Object> user1 = new HashMap<>();
+                        user1.put("Adam's Day",String.valueOf(inf));
+                        user1.put("Min Adam's Day", String.valueOf(minAdamDays));
+                        user1.put("Max Adam's Day", String.valueOf(maxAdamDays));
+                        user1.put("Number Of Attempts Adam's Day", String.valueOf(numberOfAttempts));
+                        user1.put("Adam's Day Total", total);
+                        documentReference1.set(user1, SetOptions.merge());
+                    } else{
+                        Toast.makeText(getApplicationContext(), "Unable to update the scores", Toast.LENGTH_LONG).show();
+                    }
+                } else{
+                    Toast.makeText(getApplicationContext(), "Unable to update the scores", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
-        Map<String,Object> user1 = new HashMap<>();
-        user1.put("Adam's Day",inf);
-
-        documentReference1.set(user1, SetOptions.merge());
 
         SharedPreferences shrd = getSharedPreferences("Interpretation",MODE_PRIVATE);
         SharedPreferences.Editor shared = shrd.edit();

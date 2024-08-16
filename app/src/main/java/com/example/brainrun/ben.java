@@ -1,9 +1,11 @@
 package com.example.brainrun;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,10 +19,14 @@ import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
@@ -281,12 +287,41 @@ public class ben extends AppCompatActivity {
 
         userID = fAuth.getCurrentUser().getUid();
         DocumentReference documentReference1 = fstore.collection("users").document(userID).collection("What's Next").document(userID);
-
-        Map<String,Object> user1 = new HashMap<>();
-        user1.put("Dane's Drawing",inf);
-
-        documentReference1.set(user1, SetOptions.merge());
-
+        documentReference1.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()){
+                    DocumentSnapshot documentSnapshot = task.getResult();
+                    if(documentSnapshot.exists()){
+                        Map<String, Object> userData = documentSnapshot.getData();
+                        assert userData != null;
+                        int maxAdamDays = Integer.parseInt(userData.getOrDefault("Max Dane's Drawing", "0").toString());
+                        int minAdamDays = Integer.parseInt(userData.getOrDefault("Min Dane's Drawing", "0").toString());
+                        int numberOfAttempts = Integer.parseInt(userData.getOrDefault("Number Of Attempts Dane's Drawing", "0").toString()) + 1;
+                        int total = Integer.parseInt(userData.getOrDefault("Dane's Drawing Total", "0").toString()) + inf;
+                        if(inf>maxAdamDays){
+                            maxAdamDays = inf;
+                        }
+                        if(minAdamDays==-1 || minAdamDays>inf){
+                            minAdamDays = inf;
+                        }
+//                        float avg = ((float) total /numberOfAttempts);
+//                        @SuppressLint("DefaultLocale") String formattedAvg = String.format("%.2f", avg);
+                        Map<String,Object> user1 = new HashMap<>();
+                        user1.put("Dane's Drawing",String.valueOf(inf));
+                        user1.put("Min Dane's Drawing", String.valueOf(minAdamDays));
+                        user1.put("Max Dane's Drawing", String.valueOf(maxAdamDays));
+                        user1.put("Number Of Attempts Dane's Drawing", String.valueOf(numberOfAttempts));
+                        user1.put("Dane's Drawing Total", total);
+                        documentReference1.set(user1, SetOptions.merge());
+                    } else{
+                        Toast.makeText(getApplicationContext(), "Unable to update the scores", Toast.LENGTH_LONG).show();
+                    }
+                } else{
+                    Toast.makeText(getApplicationContext(), "Unable to update the scores", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
 
 //        if (m4.isChecked()){ data4 = "1";}

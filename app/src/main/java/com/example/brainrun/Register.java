@@ -98,6 +98,7 @@ public class Register extends AppCompatActivity {
                             user.put("fname",fullName);
                             user.put("email",email);
                             user.put("phone",phone);
+                            user.put("id",userID);
 
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
@@ -112,6 +113,33 @@ public class Register extends AppCompatActivity {
                             });
 
                             Map<String,Object> user1 = new HashMap<>();
+                            user1.put("Adam's Day","0");
+                            user1.put("Cia's Surprise","0");
+                            user1.put("Dane's Drawing","0");
+                            user1.put("John and Norman","0");
+
+                            user1.put("Max Adam's Day","0");
+                            user1.put("Max Cia's Surprise","0");
+                            user1.put("Max Dane's Drawing","0");
+                            user1.put("Max John and Norman","0");
+
+                            user1.put("Min Adam's Day","-1");
+                            user1.put("Min Cia's Surprise","-1");
+                            user1.put("Min Dane's Drawing","-1");
+                            user1.put("Min John and Norman","-1");
+
+                            user1.put("Number of Attempts Adam's Day","0");
+                            user1.put("Number of Attempts Cia's Surprise","0");
+                            user1.put("Number of Attempts Dane's Drawing","0");
+                            user1.put("Number of Attempts John and Norman","0");
+
+// Adding total fields
+                            user1.put("Adam's Day Total", "0");
+                            user1.put("Cia's Surprise Total", "0");
+                            user1.put("Dane's Drawing Total", "0");
+                            user1.put("John and Norman Total", "0");
+
+
                             documentReference1.set(user1).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
@@ -124,10 +152,91 @@ public class Register extends AppCompatActivity {
                                 }
                             });
                             Map<String,Object> user2 = new HashMap<>();
+                            user2.put("Bank Thief","0");
+                            user2.put("Playing with Graphs","0");
+                            user2.put("Riddles","0");
+                            user2.put("Odd One Out","0");
+
+                            user2.put("Min Bank Thief","-1");
+                            user2.put("Max Bank Thief","0");
+                            user2.put("Number of Attempts Bank Thief","0");
+
+                            user2.put("Min Playing with Graphs","-1");
+                            user2.put("Max Playing with Graphs","0");
+                            user2.put("Number of Attempts Playing with Graphs","0");
+
+                            user2.put("Min Riddles","-1");
+                            user2.put("Max Riddles","0");
+                            user2.put("Number of Attempts Riddles","0");
+
+                            user2.put("Min Odd One Out","-1");
+                            user2.put("Max Odd One Out","0");
+                            user2.put("Number of Attempts Odd One Out","0");
+
+                            user2.put("Bank Thief Total", "0");
+                            user2.put("Playing with Graphs Total", "0");
+                            user2.put("Riddles Total", "0");
+                            user2.put("Odd One Out Total", "0");
+
+
                             documentReference2.set(user2);
                             Map<String,Object> user3 = new HashMap<>();
+                            user3.put("Blake's Boxes","0");
+                            user3.put("Detective Blake","0");
+                            user3.put("Graphical Night","0");
+                            user3.put("Sunday's Game","0");
+
+                            user3.put("Min Blake's Boxes","-1");
+                            user3.put("Max Blake's Boxes","0");
+                            user3.put("Number of Attempts Blake's Boxes","0");
+
+                            user3.put("Min Detective Blake","-1");
+                            user3.put("Max Detective Blake","0");
+                            user3.put("Number of Attempts Detective Blake","0");
+
+                            user3.put("Min Graphical Night","-1");
+                            user3.put("Max Graphical Night","0");
+                            user3.put("Number of Attempts Graphical Night","0");
+
+                            user3.put("Min Sunday's Game","-1");
+                            user3.put("Max Sunday's Game","0");
+                            user3.put("Number of Attempts Sunday's Game","0");
+
+                            user3.put("Blake's Boxes Total", "0");
+                            user3.put("Detective Blake Total", "0");
+                            user3.put("Graphical Night Total", "0");
+                            user3.put("Sunday's Game Total", "0");
+
+
                             documentReference3.set(user3);
                             Map<String,Object> user4 = new HashMap<>();
+                            user4.put("Chaos at School","0");
+                            user4.put("Peter's Dilemma","0");
+                            user4.put("Ben's Trip","0");
+                            user4.put("Football Match","0");
+
+                            user4.put("Min Chaos at School","-1");
+                            user4.put("Max Chaos at School","0");
+                            user4.put("Number of Attempts Chaos at School","0");
+
+                            user4.put("Min Peter's Dilemma","-1");
+                            user4.put("Max Peter's Dilemma","0");
+                            user4.put("Number of Attempts Peter's Dilemma","0");
+
+                            user4.put("Min Ben's Trip","-1");
+                            user4.put("Max Ben's Trip","0");
+                            user4.put("Number of Attempts Ben's Trip","0");
+
+                            user4.put("Min Football Match","-1");
+                            user4.put("Max Football Match","0");
+                            user4.put("Number of Attempts Football Match","0");
+
+                            user4.put("Chaos at School Total", "0");
+                            user4.put("Peter's Dilemma Total", "0");
+                            user4.put("Ben's Trip Total", "0");
+                            user4.put("Football Match Total", "0");
+
+
                             documentReference4.set(user4);
 
                             startActivity(new Intent(getApplicationContext(),Login.class));

@@ -1,9 +1,11 @@
 package com.example.brainrun;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,8 +19,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.chrisbanes.photoview.PhotoView;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
@@ -184,11 +189,42 @@ public class graph extends AppCompatActivity {
 
         userID = fAuth.getCurrentUser().getUid();
         DocumentReference documentReference1 = fstore.collection("users").document(userID).collection("Curious Sam").document(userID);
-
-        Map<String,Object> user1 = new HashMap<>();
-        user1.put("Playing with Graphs",inf);
-
-        documentReference1.set(user1, SetOptions.merge());
+        documentReference1.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()){
+                    DocumentSnapshot documentSnapshot = task.getResult();
+                    if(documentSnapshot.exists()){
+                        Map<String, Object> userData = documentSnapshot.getData();
+                        assert userData != null;
+                        int maxAdamDays = Integer.parseInt(userData.getOrDefault("Max Playing with Graphs", "0").toString());
+                        int minAdamDays = Integer.parseInt(userData.getOrDefault("Min Playing with Graphs", "0").toString());
+                        int numberOfAttempts = Integer.parseInt(userData.getOrDefault("Number Of Attempts Playing with Graphs", "0").toString()) + 1;
+                        int total = Integer.parseInt(userData.getOrDefault("Playing with Graphs Total", "0").toString()) + inf;
+                        if(inf>maxAdamDays){
+                            maxAdamDays = inf;
+                        }
+                        if(minAdamDays==-1 || minAdamDays>inf){
+                            minAdamDays = inf;
+                        }
+//                        float avg = ((float) total /numberOfAttempts);
+//                        @SuppressLint("DefaultLocale") String formattedAvg = String.format("%.2f", avg);
+                        Map<String,Object> user1 = new HashMap<>();
+                        user1.put("Playing with Graphs",String.valueOf(inf));
+                        user1.put("Min Playing with Graphs", String.valueOf(minAdamDays));
+                        user1.put("Max Playing with Graphs", String.valueOf(maxAdamDays));
+                        user1.put("Number Of Attempts Playing with Graphs", String.valueOf(numberOfAttempts));
+                        user1.put("Playing with Graphs Total", total);
+                        documentReference1.set(user1, SetOptions.merge());
+                    } else{
+                        Toast.makeText(getApplicationContext(), "Unable to update the scores", Toast.LENGTH_LONG).show();
+                    }
+                } else{
+                    Toast.makeText(getApplicationContext(), "Unable to update the scores", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        
 
 //        if (m4.isChecked()){ data4 = "1";}
 //        else { data4 = "0";}
