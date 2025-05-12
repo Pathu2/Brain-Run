@@ -24,7 +24,19 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
+
+import android.widget.Spinner;
+import android.widget.ArrayAdapter;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.CollectionReference;
+
+import kotlin.collections.ArrayDeque;
+
 
 public class Register extends AppCompatActivity {
 
@@ -35,6 +47,8 @@ public class Register extends AppCompatActivity {
     FirebaseFirestore fstore;
     ProgressBar progressBar;
     String userID;
+    Spinner mSchoolSpinner;
+    TextView schoolLabel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +61,9 @@ public class Register extends AppCompatActivity {
         mPhone      = findViewById(R.id.phone);
         mRegisterBtn= findViewById(R.id.registerBtn);
         mLoginBtn   = findViewById(R.id.createText);
+        mSchoolSpinner = findViewById(R.id.school);
+        schoolLabel = findViewById(R.id.schoolLabel);
+        schoolLabel.setText("Select your school");
 
         fAuth = FirebaseAuth.getInstance();
         fstore = FirebaseFirestore.getInstance();
@@ -57,6 +74,8 @@ public class Register extends AppCompatActivity {
             finish();
         }
 
+        loadSchools();
+
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,6 +83,12 @@ public class Register extends AppCompatActivity {
                 String password = mPassword.getText().toString().trim();
                 final String fullName = mFullName.getText().toString();
                 final String phone    = mPhone.getText().toString();
+                final String selectedSchool = mSchoolSpinner.getSelectedItem().toString();
+
+                if (selectedSchool.equals("Select your school")) {
+                    Toast.makeText(Register.this, "Please select a school.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 if(TextUtils.isEmpty(email)){
                     mEmail.setError("Email is Required.");
@@ -73,8 +98,11 @@ public class Register extends AppCompatActivity {
                     mPassword.setError("Password is Required.");
                     return;
                 }
-                if(password.length() < 6){
-                    mPassword.setError("Password Must be >= 6 Characters");
+
+                String regex = "^(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{9,}$";
+                Pattern pattern = Pattern.compile(regex);
+                if (!pattern.matcher(password).matches()) {
+                    mPassword.setError("Password must contain at least one capital letter, one special character, and be greater than 8 characters.");
                     return;
                 }
 
@@ -98,6 +126,8 @@ public class Register extends AppCompatActivity {
                             user.put("fname",fullName);
                             user.put("email",email);
                             user.put("phone",phone);
+                            user.put("id",userID);
+                            user.put("school", selectedSchool);
 
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
@@ -151,6 +181,26 @@ public class Register extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
             }
         });
+    }
 
+    private void loadSchools() {
+        DocumentReference schoolsDocRef = fstore.collection("variables").document("schools");
+        schoolsDocRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document != null && document.exists()) {
+                        List<String> schoolList = (List<String>) document.get("schools");
+                        if (schoolList != null) {
+                            schoolList.add("Others");
+                            ArrayAdapter<String> adapter = new ArrayAdapter<>(Register.this, android.R.layout.simple_spinner_item, schoolList);
+                            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            mSchoolSpinner.setAdapter(adapter);
+                        }
+                    }
+                }
+            }
+        });
     }
 }

@@ -13,14 +13,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BrainRun">
         <activity
+            android:name=".activity_about"
+            android:exported="false" />
+        <!-- Initialization Provider: Remove the tools:node="remove" if not required -->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false" /> <!-- Main Activity -->
+        <activity
             android:name=".SplashLogo"
+            android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity> <!-- Define all other activities here -->
         <activity
             android:name=".Dashboard"
             android:screenOrientation="portrait" />
@@ -164,10 +173,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".splash"
-            android:screenOrientation="portrait">
-
-        </activity>
-
+            android:screenOrientation="portrait" /> <!-- Meta-data for preloaded fonts -->
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

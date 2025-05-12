@@ -7,6 +7,10 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class Dashboard extends AppCompatActivity {
@@ -71,10 +75,45 @@ public class Dashboard extends AppCompatActivity {
         String analysis1 = getShared5.getString("gifts","0");
         BlakeBox.setText(analysis1);
 
-        DetectiveBlake = findViewById(R.id.DetectiveScore);
-        SharedPreferences getShared6 = getSharedPreferences("analysis",MODE_PRIVATE);
-        String analysis2 = getShared6.getString("detective","0");
-        DetectiveBlake.setText(analysis2);
+                                break;
+                            case "Perfect Estimation":
+                                if(userData!=null){
+                                    int schoolChaos = Integer.parseInt(userData.getOrDefault("Chaos at School", "0").toString());
+                                    int peterDilemma = Integer.parseInt(userData.getOrDefault("Peter's Dilemma", "0").toString());
+                                    int benTrip = Integer.parseInt(userData.getOrDefault("Ben's Trip", "0").toString());
+                                    int football = Integer.parseInt(userData.getOrDefault("Football Match", "0").toString());
+                                    int total = schoolChaos + peterDilemma + benTrip + football;
+                                    SchoolChaos.setText(String.valueOf(schoolChaos));
+                                    PeterDilemma.setText(String.valueOf(peterDilemma));
+                                    BenTrip.setText(String.valueOf(benTrip));
+                                    Football.setText(String.valueOf(football));
+                                    TotalPerfect.setText(String.valueOf(total));
+                                } else {
+                                    SchoolChaos.setText("0");
+                                    PeterDilemma.setText("0");
+                                    BenTrip.setText("0");
+                                    Football.setText("0");
+                                    TotalPerfect.setText("0");
+                                }
+                                break;
+                        }
+                    } else {
+                        Log.d("document", "onComplete: error getting document");
+                        showErrorAndRedirect();
+                    }
+                } else {
+                    Log.d("user", "onComplete: error getting user");
+                    showErrorAndRedirect();
+                }
+                if(fetchCounter==4){
+                    progressBar.setVisibility(View.GONE);
+                    scrollView.setVisibility(View.VISIBLE);
+//                    progressBar.setVisibility(View.GONE);
+//                    scrollView.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+    }
 
         GraphicalNight=findViewById(R.id.GraphicalScore);
         SharedPreferences getShared7 = getSharedPreferences("analysis",MODE_PRIVATE);

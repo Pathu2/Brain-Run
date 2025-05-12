@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity_about"
+    android:background="@color/white">
+
+    <!-- Logo or Icon at the top of the page -->
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/br"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="40dp"
+    android:contentDescription="Logo" />
+
+    <!-- About Text with padding, shadow, and styling -->
+    <TextView
+        android:id="@+id/aboutText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This app was developed by Prathmesh Somani under the guidance of Dr. Kaushal Kumar Bhagat, Advance Technology Development Center, IIT Kharagpur"
+        android:textSize="20sp"
+        android:textColor="#DD0A0A"
+    android:layout_centerInParent="true"
+    android:layout_marginTop="150dp"
+    android:fontFamily="@font/poppins_bold"
+    android:textAlignment="center"
+    android:padding="20dp"
+    android:layout_marginHorizontal="10dp" />
+
+</RelativeLayout>

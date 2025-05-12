@@ -121,7 +121,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="What's Next!!!: Dane's Drawing"
+        android:text="What's Next!!!: John and Norman"
         android:textColor="#1C0D3F"
         android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"

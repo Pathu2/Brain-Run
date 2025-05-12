@@ -56,9 +56,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
                 android:layout_marginTop="20dp"
-                android:text="Curious Sam  :"
+                android:text="Curious Sam :"
                 android:textColor="#dd0a0a"
                 android:textSize="25sp"
                 android:textStyle="bold"
@@ -68,8 +67,7 @@
                             android:id="@+id/total_score_curioussam"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginLeft="20dp"
+                            android:layout_marginLeft="5dp"
                             android:layout_marginTop="20dp"
                             android:layout_marginRight="200dp"
                             android:layout_toRightOf="@id/curiousSam2"
@@ -213,9 +211,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
                 android:layout_marginTop="20dp"
-                android:text="Blake's Adventure  :"
+                android:text="Blake's Adventure :"
                 android:textColor="#dd0a0a"
                 android:textSize="25sp"
                 android:textStyle="bold"
@@ -233,9 +230,9 @@
                 android:layout_marginRight="200dp"
                 android:textStyle="bold"
                 android:id="@+id/total_score_blake"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
+                />
             </RelativeLayout>
 
             <TableLayout
@@ -372,9 +369,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
                 android:layout_marginTop="20dp"
-                android:text="Perfect Estimation  :"
+                android:text="Perfect Estimation :"
                 android:textColor="#dd0a0a"
                 android:textSize="25sp"
                 android:textStyle="bold"
@@ -389,11 +385,9 @@
                     android:text="00"
                     android:textSize="25sp"
                     android:textColor="#dd0a0a"
-                    android:layout_marginRight="20dp"
                     android:textStyle="bold"
                     android:id="@+id/total_score_estimation"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="5dp"
                     android:layout_marginTop="20dp"/>
             </RelativeLayout>
 
@@ -531,9 +525,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
                 android:layout_marginTop="20dp"
-                android:text="What's Next!!!  :"
+                android:text="What's Next!!! :"
                 android:textColor="#dd0a0a"
                 android:textSize="25sp"
                 android:textStyle="bold"
@@ -551,8 +544,7 @@
                 android:layout_marginRight="20dp"
                 android:textStyle="bold"
                 android:id="@+id/total_score_next"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="5dp"
                 android:layout_marginTop="20dp"/>
             </RelativeLayout>
 
