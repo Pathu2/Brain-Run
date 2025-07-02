@@ -184,7 +184,6 @@
                     android:id="@+id/radioButton2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="top"
                     android:textColor="#dd0a0a"
                     android:text="Pack a Sweater but not the Umbrella."
                     android:textSize="14sp"
@@ -197,7 +196,6 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="top"
                     android:textColor="#dd0a0a"
                     android:text="Pack both Umbrella and Sweater."
                     android:textSize="14sp"
@@ -209,7 +207,6 @@
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="top"
                     android:textColor="#dd0a0a"
                     android:text="Avoid both Umbrella and Sweater."
                     android:textSize="14sp"

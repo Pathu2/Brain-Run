@@ -77,6 +77,7 @@
         android:layout_below="@+id/Email"
         android:layout_centerHorizontal="true"/>
 
+
     <EditText
         android:id="@+id/phone"
         android:layout_width="wrap_content"
@@ -89,6 +90,28 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/password"/>
 
+    <TextView
+        android:id="@+id/schoolLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/phone"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="Select Your School"
+        android:textColor="#dd0a0a"
+        android:textSize="16sp"/>
+
+    <Spinner
+        android:id="@+id/schoolsSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/schoolLabel"
+        android:layout_centerHorizontal="true"
+        android:minWidth="200dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:padding="10dp"/>
+
     <Button
         android:id="@+id/registerBtn"
         android:layout_width="match_parent"
@@ -96,7 +119,7 @@
         android:layout_marginTop="20dp"
         android:text="Register"
         android:textSize="20sp"
-        android:layout_below="@+id/password"
+        android:layout_below="@+id/schoolsSpinner"
         android:layout_centerHorizontal="true"
         android:background="@drawable/gradient_button"
         android:fontFamily="@font/poppins_bold"

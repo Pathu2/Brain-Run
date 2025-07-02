@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -78,7 +79,7 @@ public class ascore4 extends AppCompatActivity {
         TextView textview3 = findViewById(R.id.textView12);
         if (Integer.parseInt(data33) == 0) {
             textview3.setText("Wrong");
-            textview2.setTextColor(getResources().getColor(R.color.red));
+            textview3.setTextColor(getResources().getColor(R.color.red));
         }
         else {
             textview3.setText("Right");

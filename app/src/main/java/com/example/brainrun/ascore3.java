@@ -71,7 +71,7 @@ public class ascore3 extends AppCompatActivity {
         }
         else {
             textview2.setText("Right");
-            textview1.setTextColor(getResources().getColor(R.color.green));
+            textview2.setTextColor(getResources().getColor(R.color.green));
         }
         TextView textview3 = findViewById(R.id.textView12);
         if (Integer.parseInt(data33) == 0) {
@@ -80,7 +80,7 @@ public class ascore3 extends AppCompatActivity {
         }
         else {
             textview3.setText("Right");
-            textview1.setTextColor(getResources().getColor(R.color.green));
+            textview3.setTextColor(getResources().getColor(R.color.green));
         }
 
         float t=120;          // Threshold time

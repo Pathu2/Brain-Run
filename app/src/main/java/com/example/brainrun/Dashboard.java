@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
@@ -190,9 +191,11 @@ public class Dashboard extends AppCompatActivity {
                                 break;
                         }
                     } else {
+                        Log.d("document", "onComplete: error getting document");
                         showErrorAndRedirect();
                     }
                 } else {
+                    Log.d("user", "onComplete: error getting user");
                     showErrorAndRedirect();
                 }
                 if(fetchCounter==4){

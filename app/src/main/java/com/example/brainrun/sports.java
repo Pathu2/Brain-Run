@@ -13,6 +13,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.MediaController;
@@ -108,11 +109,24 @@ public class sports extends AppCompatActivity {
         String videoPath1 = "android.resource://" + getPackageName()+ "/" + R.raw.sc41;
         Uri uri1 = Uri.parse(videoPath1);
         videoView1.setVideoURI(uri1);
-        videoView1.start();
+
 
         MediaController mediaController1 = new MediaController(this);
         videoView1.setMediaController(mediaController1);
         mediaController1.setAnchorView(videoView1);
+        videoView1.start();
+//        videoView1.setOnPreparedListener(mp -> {
+//            int videoWidth = mp.getVideoWidth();
+//            int videoHeight = mp.getVideoHeight();
+//
+//            ViewGroup.LayoutParams layoutParams = videoView1.getLayoutParams();
+//            layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
+//            layoutParams.height = (int) ((float) layoutParams.width * videoHeight / videoWidth);
+//
+//            videoView1.setLayoutParams(layoutParams);
+//        });
+
+
 
         VideoView videoView2 = findViewById(R.id.videoView1);
         String videoPath2 = "android.resource://" + getPackageName()+ "/" + R.raw.sc42;
