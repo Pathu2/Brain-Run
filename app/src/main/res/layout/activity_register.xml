@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
     tools:context=".Register">
 
     <TextView
@@ -32,6 +33,7 @@
         android:layout_marginLeft="30dp"
         android:textColor="#DD0A0A"
         android:alpha="0.8"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,92 +48,127 @@
 
     <EditText
         android:id="@+id/fullName"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView3"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
-        android:ems="10"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:hint="Name"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:textColor="#2C2C2C"
+        android:textColorHint="#666666"
+        android:background="@drawable/edittext_background" />
 
     <EditText
         android:id="@+id/Email"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/fullName"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
-        android:ems="10"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:hint="Email"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:textColor="#2C2C2C"
+        android:textColorHint="#666666"
+        android:background="@drawable/edittext_background" />
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
         android:layout_below="@+id/Email"
-        android:layout_centerHorizontal="true"/>
-
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:textColor="#2C2C2C"
+        android:textColorHint="#666666"
+        android:background="@drawable/edittext_background" />
 
     <EditText
         android:id="@+id/phone"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
+        android:layout_marginTop="15dp"
         android:hint="Phone"
         android:inputType="phone"
-        android:visibility="gone"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/password"/>
+        android:layout_below="@+id/password"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:textColor="#2C2C2C"
+        android:textColorHint="#666666"
+        android:background="@drawable/edittext_background" />
 
-    <TextView
-        android:id="@+id/schoolLabel"
-        android:layout_width="wrap_content"
+    <!-- School Selection Container -->
+    <LinearLayout
+        android:id="@+id/schoolContainer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/phone"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:text="Select Your School"
-        android:textColor="#dd0a0a"
-        android:textSize="16sp"/>
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:orientation="vertical"
+        android:background="@drawable/school_container_background"
+        android:padding="16dp">
 
-    <Spinner
-        android:id="@+id/schoolsSpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/schoolLabel"
-        android:layout_centerHorizontal="true"
-        android:minWidth="200dp"
-        android:background="@android:drawable/btn_dropdown"
-        android:padding="10dp"/>
+        <TextView
+            android:id="@+id/schoolLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Your School"
+            android:textColor="#dd0a0a"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <Spinner
+            android:id="@+id/schoolsSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/spinner_background"
+            android:padding="12dp"
+            android:layout_marginTop="4dp"
+            android:popupBackground="@android:color/white"
+            android:dropDownHeight="200dp" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/registerBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:text="Register"
         android:textSize="20sp"
-        android:layout_below="@+id/schoolsSpinner"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/schoolContainer"
         android:background="@drawable/gradient_button"
         android:fontFamily="@font/poppins_bold"
         android:layout_marginRight="50dp"
         android:layout_marginLeft="50dp"
-        android:textColor="#fff"/>
+        android:textColor="#fff"
+        android:elevation="4dp"
+        android:padding="14dp"/>
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:src="@drawable/key"
-        android:layout_below="@+id/registerBtn"/>
+        android:layout_below="@+id/registerBtn"
+        android:alpha="0.1"
+        android:scaleType="centerCrop"/>
 
     <TextView
         android:id="@+id/createText"

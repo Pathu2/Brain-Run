@@ -44,6 +44,9 @@ public class Register extends AppCompatActivity {
     String userID;
     List<String> schoolsList;
 
+    private static final String PHONE_PATTERN = "^[6-9]\\d{9}$";
+    private static final Pattern phonePattern = Pattern.compile(PHONE_PATTERN);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,6 +118,17 @@ public class Register extends AppCompatActivity {
                 if(TextUtils.isEmpty(password)){
                     mPassword.setError("Password is Required.");
                     return;
+                }
+                if(TextUtils.isEmpty(phone)){
+                    mPhone.setError("Phone should not be empty");
+                    return;
+                }
+                if(!phonePattern.matcher(phone).matches()){
+                    mPhone.setError("Please enter a valid phone number");
+                    return;
+                }
+                if(phone.length()!=10){
+                    mPhone.setError("Phone should of length 10");
                 }
                 if(school.equals("Select a school")){
                     Toast.makeText(Register.this, "Please select a school", Toast.LENGTH_SHORT).show();

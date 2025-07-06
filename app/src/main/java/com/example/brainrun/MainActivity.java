@@ -278,9 +278,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             }
             case R.id.about: {
-                Toast.makeText(this, "About page is not available", Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(MainActivity.this, Dashboard.class);
-//                startActivity(intent);
+//                Toast.makeText(this, "About page is not available", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, About.class);
+                startActivity(intent);
                 break;
             }
             case R.id.score: {
