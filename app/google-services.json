@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "726767351128",
-    "project_id": "brain-run-48651",
-    "storage_bucket": "brain-run-48651.appspot.com"
+    "project_number": "174818664695",
+    "project_id": "brain-run-6ecf3",
+    "storage_bucket": "brain-run-6ecf3.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:726767351128:android:2361a76aca0285da39e12d",
+        "mobilesdk_app_id": "1:174818664695:android:69a6b8dd9753bcca06f3f2",
         "android_client_info": {
           "package_name": "com.example.brainrun"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyC5vMEyeKwuUISb-OWxXhfL9DTYPPGz9Ts"
+          "current_key": "AIzaSyDHg1tG_7BHqbL2G8sM97_2Jj5u9Gamxrs"
         }
       ],
       "services": {
